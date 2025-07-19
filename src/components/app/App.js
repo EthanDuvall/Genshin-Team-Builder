@@ -1,62 +1,64 @@
 import { useEffect, useState } from "react";
-import "./App.css"
+import characters from "../../util/characters.json";
+import "./App.css";
 function App() {
-  const [characters, setCharacters] = useState(null)
-  const [isModalOpen, setIsModalOpen] = usestate(false)
-  const [main, setMain] = useState(null)
-  const [fetchedIcons, setFetchedIcons] = usestate([null])
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [ownedCharacters, setOwnedCharacters] = useState();
+  const [allCharacters, setAllCharacters] = useState();
 
   useEffect(() => {
-    if(localStorage.getItem('savedCharacters')){
-      setCharacters(localStorage.getItem('savedCharacters'))
-    }
-  },[])
+    getCharacters();
+  }, []);
 
+  function getCharacters() {
+    //wip until i create my own api
+    var htmlCharacters = [];
+    characters.forEach((character) => {
+      htmlCharacters.push(
+        <div
+          id={character.id}
+          className={`rarity${character.rarity} characters`}
+        >
+          <img src={character.icon} alt={`Icon of ${character.name}`} />
+          <h3>{character.name}</h3>
+          <p>{character.element}</p>
+        </div>
+      );
+    });
+    setAllCharacters(htmlCharacters);
+  }
 
+  function characterForm() {}
 
-  function displayCharacters(){
-    if(characters){
-      return <h1>hi</h1>
+  function displayCharacters() {
+    if (ownedCharacters) {
+      return <h1>hi</h1>;
     } else {
-      return <h2> No characters found - add them or refresh the page </h2>
+      return <h2> No characters found - add them or refresh the page </h2>;
     }
   }
-
-  function fillCharacterInput(){
-    var characterIcons = []
-    if(fetchedIcons){
-      fetchedIcons.forEach((icon) => {
-
-
-
-      })
-    }
-
-
-    return(<h1>hi</h1>)
-  }
-  
-
-
-
 
   return (
     <div>
       <h1>Genshin Team Builder!</h1>
       <h2>to get started add your characters!</h2>
-      <button>Characters</button>
-      <div>
-          {displayCharacters()}
-      </div>
+      <button
+        onClick={() => {
+          setIsModalOpen(true);
+          console.log(allCharacters);
+        }}
+      >
+        Characters
+      </button>
+      <div>{allCharacters}</div>
       <button>Create me a team!</button>
-      {isModalOpen && 
-      <form>
-        {fillCharacterInput()}
-        
-      </form>
-        }
+      {isModalOpen && (
+        <form>
+          <h1>hi</h1>
+        </form>
+      )}
     </div>
-  )
+  );
 }
 
 export default App;

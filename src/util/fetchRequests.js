@@ -1,5 +1,5 @@
 function getCharacterImgs(){
-fetch("https://genshin.jmp.blue/characters", options)
+fetch("", options)
   .then(response => {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
