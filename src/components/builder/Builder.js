@@ -1,4 +1,3 @@
-import "../../util/teams.json"
 import './Builder.css'
 
 
