@@ -28,7 +28,26 @@ function App() {
     setAllCharacters(htmlCharacters);
   }
 
-  function characterForm() {}
+  function characterForm() {
+    var formContents = [];
+    characters.forEach((character) => {
+      formContents.push(
+        <>
+          <input
+            type="checkbox"
+            id={character.id}
+            className={`rarity${character.rarity} characters`}
+            value={character.name}
+          />
+
+          <label for={character.id}>
+            {<img src={character.icon} alt={`Icon of ${character.name}`} />}
+          </label>
+        </>
+      );
+    });
+    return formContents;
+  }
 
   function displayCharacters() {
     if (ownedCharacters) {
@@ -42,21 +61,21 @@ function App() {
     <div>
       <h1>Genshin Team Builder!</h1>
       <h2>to get started add your characters!</h2>
+      <div>{displayCharacters()}</div>
       <button
         onClick={() => {
-          setIsModalOpen(true);
-          console.log(allCharacters);
+          if(isModalOpen){
+            setIsModalOpen(false)
+          }else{
+            setIsModalOpen(true)
+          }
         }}
       >
         Characters
       </button>
-      <div>{allCharacters}</div>
+
       <button>Create me a team!</button>
-      {isModalOpen && (
-        <form>
-          <h1>hi</h1>
-        </form>
-      )}
+      {isModalOpen && <form>{characterForm()}</form>}
     </div>
   );
 }
