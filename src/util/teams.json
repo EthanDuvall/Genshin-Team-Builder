@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "core": ["Ayaka"],
+    "teams": {
+      "Freeze": ["Cryo", "Anemo", "Hydro"],
+      "Mono": ["Cryo", "Cryo", "Anemo"]
+    },
+    "Cryo": ["Ganyu", "Rosaria", "Kaeya", "Shenhe", "Diona", "Layla"],
+    "Anemo": ["Kazuha", "Venti", "Jean", "Sucrose"],
+    "Hydro": ["Kokomi", "Mona", "Ayato", "Xingqiu", "Yelan", "Barbara"]
+  },
+  {
+    "id": 2,
+    "core": ["Alhaitham"],
+    "teams":{
+        "Quickin":["Electro","Electro","Dendro"],
+        "HyperBloom":["Electro","Hydro","Hydro Dendro Electro"],
+        "Burgeon":["Pyro","Hydro","Hydro Dendro Electro"]
+    },
+    "Electro": ["Fischl", "Yae Miko", "Kuki Shinobu", "Beidou", "Lisa", "Raiden","Dori"],
+    "Dendro": ["Nahida", "Yaoyao", "Baizhu","Collei","Traveler", "Kaveh"],
+    "Hydro": ["Furina", "Yelan", "Xingqiu","Nilou","Kokomi"],
+    "Pyro":["Thoma","Dehya","Bennett"],
+    "Geo":["Zhongli","Albedo","Chiori"],
+    "Anemo":["Sucrose","Kazuha","Xianyun","Jean"],
+    "Cryo":["Diona","Layla"]
+
+  }
+]
