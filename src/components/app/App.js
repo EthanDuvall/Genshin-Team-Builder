@@ -6,6 +6,7 @@ import Builder from "../builder/Builder";
 import "./App.css";
 function App() {
   const [allCharacters, setAllCharacters] = useState();
+  const [chosenCharacter, setChosenCharacter] = useState(null);
 
   useEffect(() => {
     getCharacters();
@@ -20,8 +21,8 @@ function App() {
     <div>
       <h1>Genshin Team Builder!</h1>
       <Routes>
-        <Route path="/" element={<Home allCharacters= {allCharacters} />} />
-        <Route path="/build" element={<Builder />} />
+        <Route path="/" element={<Home allCharacters={allCharacters} setChosenCharacter = {setChosenCharacter}/>} />
+        <Route path="/build" element={<Builder chosenCharacter = {chosenCharacter} />} />
       </Routes>
     </div>
   );

@@ -1,13 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import { useEffect, useState } from "react";
-function Home(allCharacters) {
+function Home({ allCharacters, setChosenCharacter }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [ownedCharacters, setOwnedCharacters] = useState();
   const [selectedCharacter, setSelectedCharacter] = useState(null);
+  const navigate = useNavigate();
 
   function characterForm() {
     var formContents = [];
-    allCharacters.allCharacters.map((character) => {
+    allCharacters.map((character) => {
       formContents.push(
         <>
           <input
@@ -27,16 +29,14 @@ function Home(allCharacters) {
     });
     return formContents;
   }
+
   function selectCharacter(id) {
     const char = ownedCharacters.find((character) => {
       return character.id == id;
     });
-
+    setChosenCharacter(char);
     setSelectedCharacter(
-      <div
-        id={char.id}
-        className={`rarity${char.rarity} characters selected`}
-      >
+      <div id={char.id} className={`rarity${char.rarity} characters selected`}>
         <img src={char.icon} alt={`Icon of ${char.name}`} />
         <h3>{char.name}</h3>
         <p>{char.element}</p>
@@ -46,9 +46,9 @@ function Home(allCharacters) {
 
   function displayCharacters() {
     if (ownedCharacters) {
-      const displayedCharacters = ownedCharacters.map((selectedCharacter) => {
-        const foundCharacter = allCharacters.allCharacters.find((character) => {
-          return character.id == selectedCharacter.id;
+      const displayedCharacters = ownedCharacters.map((char) => {
+        const foundCharacter = allCharacters.find((character) => {
+          return character.id == char.id;
         });
         if (foundCharacter) {
           return (
@@ -70,7 +70,14 @@ function Home(allCharacters) {
         }
       });
 
-      return displayedCharacters;
+      return (
+        <div>
+          <h2>
+            Now select a character by clicking on them to start building a team!{" "}
+          </h2>
+          <div>{displayedCharacters}</div>
+        </div>
+      );
     } else {
       return <h2> No characters found - add them or refresh the page </h2>;
     }
@@ -82,7 +89,7 @@ function Home(allCharacters) {
     const formData = new FormData(e.target);
     const selected = formData.getAll("characters");
     const owned = selected.map((character) => {
-      return allCharacters.allCharacters.find((charObj) => {
+      return allCharacters.find((charObj) => {
         return charObj.id == character;
       });
     });
@@ -91,7 +98,7 @@ function Home(allCharacters) {
 
   return (
     <div>
-      <h2>to get started add your characters!</h2>
+      <h2>To get started add your characters!</h2>
       <div>{displayCharacters()}</div>
       <button
         onClick={() => {
@@ -104,8 +111,17 @@ function Home(allCharacters) {
       >
         Characters
       </button>
-      <div>{selectedCharacter}</div>
-      <button>Create me a team!</button>
+      {selectedCharacter}
+      {selectedCharacter && (
+        <button
+          onClick={() => {
+            navigate("/build");
+          }}
+        >
+          Create me a team!
+        </button>
+      )}
+
       {isModalOpen && (
         <form
           onSubmit={(e) => {
