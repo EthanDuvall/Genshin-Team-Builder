@@ -3,13 +3,22 @@ import "./Home.css";
 import { useEffect, useState } from "react";
 function Home({ allCharacters, setChosenCharacter }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [ownedCharacters, setOwnedCharacters] = useState();
+  const [ownedCharacters, setOwnedCharacters] = useState([]);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const navigate = useNavigate();
 
   function characterForm() {
     var formContents = [];
+    // Checking to ensure that theres no dupeable characters added to the owned list
+    var formCharacters = [];
+
     allCharacters.map((character) => {
+      if (!ownedCharacters.includes(character)) {
+        formCharacters.push(character);
+      }
+    });
+
+    formCharacters.map((character) => {
       formContents.push(
         <>
           <input
@@ -27,6 +36,7 @@ function Home({ allCharacters, setChosenCharacter }) {
         </>
       );
     });
+
     return formContents;
   }
 
@@ -93,7 +103,7 @@ function Home({ allCharacters, setChosenCharacter }) {
         return charObj.id == character;
       });
     });
-    setOwnedCharacters(owned);
+    setOwnedCharacters([...ownedCharacters, ...owned]);
   }
 
   return (
