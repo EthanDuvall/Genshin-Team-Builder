@@ -455,14 +455,7 @@
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Shenhe_icon.png",
     "fieldRole": "off-field"
   },
-  {
-    "name": "Shikanoin Heizou",
-    "rarity": 4,
-    "element": "Anemo",
-    "id": 59,
-    "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Shikanoin%2520Heizou_icon.png",
-    "fieldRole": "off-field"
-  },
+
   {
     "name": "Sigewinne",
     "rarity": 5,
@@ -659,7 +652,7 @@
     "name": "Ayato",
     "rarity": 5,
     "element": "Cryo",
-    "id": 41,
+    "id": 59,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Kamisato%2520Ayato_icon.png",
     "fieldRole": "on-field"
   }

@@ -4,7 +4,8 @@
     "core": ["Ayaka"],
     "teams": [
       ["Cryo", "Anemo", "Hydro"],
-      ["Cryo", "Cryo", "Anemo"]
+      ["Cryo", "Cryo", "Anemo"],
+      ["Cryo", "Hydro", "Hydro"]
     ],
     "Cryo": ["Ganyu", "Rosaria", "Kaeya", "Shenhe", "Diona", "Layla"],
     "Anemo": ["Kazuha", "Venti", "Jean", "Sucrose"],
@@ -22,8 +23,12 @@
     "core": ["Alhaitham"],
     "teams": [
       ["Electro", "Electro", "Dendro"],
-      ["Electro", "Hydro", "Hydro Dendro Electro"],
-      ["Pyro", "Hydro", "Hydro Dendro Electro"]
+      ["Electro", "Hydro", "Dendro"],
+      ["Electro", "Hydro", "Electro"],
+      ["Electro", "Hydro", "Hydro"],
+      ["Pyro", "Hydro", "Electro"],
+      ["Pyro", "Hydro", "Hydro"],
+      ["Pyro", "Hydro", "Dendro"]
     ],
     "Electro": [
       "Fischl",

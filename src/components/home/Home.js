@@ -1,23 +1,28 @@
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import { useEffect, useState } from "react";
-function Home({ allCharacters, setChosenCharacter }) {
+function Home({
+  allCharacters,
+  setChosenCharacter,
+  ownedCharacters,
+  setOwnedCharacters,
+}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [ownedCharacters, setOwnedCharacters] = useState([]);
+
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const navigate = useNavigate();
 
   function characterForm() {
     var formContents = [];
-    // Checking to ensure that theres no dupeable characters added to the owned list
     var formCharacters = [];
+    // Checking to ensure that theres no dupeable characters added to the owned list
 
     allCharacters.map((character) => {
       if (!ownedCharacters.includes(character)) {
         formCharacters.push(character);
       }
     });
-
+    // Just formatting the character objects into a input for the form
     formCharacters.map((character) => {
       formContents.push(
         <>
@@ -44,7 +49,9 @@ function Home({ allCharacters, setChosenCharacter }) {
     const char = ownedCharacters.find((character) => {
       return character.id == id;
     });
+    //Sets this variable for when it transitions to the /build
     setChosenCharacter(char);
+
     setSelectedCharacter(
       <div id={char.id} className={`rarity${char.rarity} characters selected`}>
         <img src={char.icon} alt={`Icon of ${char.name}`} />
@@ -79,7 +86,6 @@ function Home({ allCharacters, setChosenCharacter }) {
           );
         }
       });
-
       return (
         <div>
           <h2>
