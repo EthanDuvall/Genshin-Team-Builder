@@ -3,7 +3,8 @@ import characters from "../../util/characters.json";
 import { Routes, Route } from "react-router-dom";
 import Home from "../home/Home";
 import Builder from "../builder/Builder";
-import "./App.css";
+import "./App.scss";
+
 function App() {
   const [allCharacters, setAllCharacters] = useState();
   const [chosenCharacter, setChosenCharacter] = useState(null);
@@ -19,31 +20,35 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>Genshin Team Builder!</h1>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              ownedCharacters={ownedCharacters}
-              setOwnedCharacters={setOwnedCharacters}
-              allCharacters={allCharacters}
-              setChosenCharacter={setChosenCharacter}
-            />
-          }
-        />
-        <Route
-          path="/build"
-          element={
-            <Builder
-              chosenCharacter={chosenCharacter}
-              ownedCharacters={ownedCharacters}
-            />
-          }
-        />
-      </Routes>
-    </div>
+    <>
+      <header>
+        <h1>Genshin Team Builder</h1>
+      </header>
+      <div>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                ownedCharacters={ownedCharacters}
+                setOwnedCharacters={setOwnedCharacters}
+                allCharacters={allCharacters}
+                setChosenCharacter={setChosenCharacter}
+              />
+            }
+          />
+          <Route
+            path="/build"
+            element={
+              <Builder
+                chosenCharacter={chosenCharacter}
+                ownedCharacters={ownedCharacters}
+              />
+            }
+          />
+        </Routes>
+      </div>
+    </>
   );
 }
 

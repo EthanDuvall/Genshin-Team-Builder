@@ -1,0 +1,21 @@
+@import '../../styles/variables.scss';
+
+
+
+body{
+  font-family:Verdana, Geneva, Tahoma, sans-serif
+  
+}
+
+
+header{
+ background-color: $page-color;
+ height: 9vh;
+ padding-top: 1%;
+ h1{
+  margin:0;
+  margin-left: 2%;
+  font-size: 5vh;
+ }
+}
+

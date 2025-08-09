@@ -1,7 +1,7 @@
 [
   {
     "name": "Albedo",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Geo",
     "id": 1,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Albedo_icon.png",
@@ -9,7 +9,7 @@
   },
   {
     "name": "Alhaitham",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Dendro",
     "id": 2,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/01/15/35428890/25249dd20b86c775fb35bdbbd805d9ec_8879881358376735994.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -17,7 +17,7 @@
   },
   {
     "name": "Aloy",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Cryo",
     "id": 3,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/11/19/80830045/1fb2086af3c7933af37eda1ff9084317_163049704110308134.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -25,7 +25,7 @@
   },
   {
     "name": "Amber",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Pyro",
     "id": 4,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Amber_icon.png",
@@ -33,7 +33,7 @@
   },
   {
     "name": "Arataki Itto",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Geo",
     "id": 5,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Arataki%2520Itto_icon.png",
@@ -41,7 +41,7 @@
   },
   {
     "name": "Baizhu",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Dendro",
     "id": 6,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/02/35428890/05599650d7f42e1c4adde373de6b297d_8001303176243726128.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -49,7 +49,7 @@
   },
   {
     "name": "Barbara",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Hydro",
     "id": 7,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Barbara_icon.png",
@@ -57,7 +57,7 @@
   },
   {
     "name": "Beidou",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Electro",
     "id": 8,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Beidou_icon.png",
@@ -65,7 +65,7 @@
   },
   {
     "name": "Bennett",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Pyro",
     "id": 9,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Bennett_icon.png",
@@ -73,7 +73,7 @@
   },
   {
     "name": "Candace",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Hydro",
     "id": 10,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/09/28/77454259/2f43da4ece9eabfbde6ec2fcc81b3bff_6412967003441390014.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -81,7 +81,7 @@
   },
   {
     "name": "Charlotte",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Cryo",
     "id": 11,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/11/06/35428890/7bbbff3f35661a93b5091b1f17fae6c0_6927814687713967999.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -89,7 +89,7 @@
   },
   {
     "name": "Chevreuse",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Pyro",
     "id": 12,
     "icon": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/01/09/35428890/a846729f31f16a987a8696466ebabcc0_6857330048220230431.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -97,7 +97,7 @@
   },
   {
     "name": "Chongyun",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Cryo",
     "id": 13,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Chongyun_icon.png",
@@ -105,7 +105,7 @@
   },
   {
     "name": "Clorinde",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Electro",
     "id": 14,
     "icon": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/06/04/35428890/770a66030815971c697ab81bc5436329_1296341861352728851.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -113,7 +113,7 @@
   },
   {
     "name": "Collei",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Dendro",
     "id": 15,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/08/24/194600931/37a18b6b6865c59063003a9380f08225_7758071773430345954.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -121,7 +121,7 @@
   },
   {
     "name": "Cyno",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Electro",
     "id": 16,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/09/28/77454259/e09e2bda5e022611fad0dea1bb6518bb_6757667565719577204.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -129,7 +129,7 @@
   },
   {
     "name": "Dehya",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Pyro",
     "id": 17,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/02/24/35428890/65b22311e1e38ffa45a4928d4005ecee_7076295870986871517.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -137,7 +137,7 @@
   },
   {
     "name": "Diluc",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Pyro",
     "id": 18,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Diluc_icon.png",
@@ -145,7 +145,7 @@
   },
   {
     "name": "Diona",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Cryo",
     "id": 19,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Diona_icon.png",
@@ -153,7 +153,7 @@
   },
   {
     "name": "Dori",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Electro",
     "id": 20,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/09/08/35428890/6539bea71efd0f839db897cfc4094362_3469125131800075941.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -161,7 +161,7 @@
   },
   {
     "name": "Eula",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Cryo",
     "id": 21,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Eula_icon.png",
@@ -169,7 +169,7 @@
   },
   {
     "name": "Faruzan",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Anemo",
     "id": 22,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/12/05/35428890/38c12ab46678a4008f83a0e46c900ef5_528211919348170763.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -177,7 +177,7 @@
   },
   {
     "name": "Fischl",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Electro",
     "id": 23,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Fischl_icon.png",
@@ -185,7 +185,7 @@
   },
   {
     "name": "Freminet",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Cryo",
     "id": 24,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/09/03/35428890/8e44111a378f4e5379b8e7444e8c2daa_4713775899437074849.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -193,7 +193,7 @@
   },
   {
     "name": "Furina",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Hydro",
     "id": 25,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/11/06/35428890/263e5ea0784d182b393f67a7e24146a5_2961704185113948066.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -201,7 +201,7 @@
   },
   {
     "name": "Ganyu",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Cryo",
     "id": 26,
     "icon": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/03/12/35428890/797ded201635d241d358c307e9e7417f_464481961971717418.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -209,7 +209,7 @@
   },
   {
     "name": "Gorou",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Geo",
     "id": 27,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Gorou_icon.png",
@@ -217,7 +217,7 @@
   },
   {
     "name": "Heizou",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Anemo",
     "id": 28,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Shikanoin%2520Heizou_icon.png",
@@ -225,7 +225,7 @@
   },
   {
     "name": "Hu Tao",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Pyro",
     "id": 29,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Hu%2520Tao_icon.png",
@@ -233,7 +233,7 @@
   },
   {
     "name": "Jean",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Anemo",
     "id": 30,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Jean_icon.png",
@@ -241,7 +241,7 @@
   },
   {
     "name": "Kaeya",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Cryo",
     "id": 31,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Kaeya_icon.png",
@@ -249,7 +249,7 @@
   },
   {
     "name": "Kaveh",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Dendro",
     "id": 32,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/02/35428890/2270aba02b92034d7d76b4426be8f53b_7062168821433378650.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -257,7 +257,7 @@
   },
   {
     "name": "Kazuha",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Anemo",
     "id": 33,
     "icon": "https://upload-os-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_Kazuha.png",
@@ -265,7 +265,7 @@
   },
   {
     "name": "Keqing",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Electro",
     "id": 34,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Keqing_icon.png",
@@ -273,7 +273,7 @@
   },
   {
     "name": "Kirara",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Dendro",
     "id": 35,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/23/35428890/d1699810632f8c3bc8c1e8c8beb8250f_3141235252861584883.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -281,7 +281,7 @@
   },
   {
     "name": "Klee",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Pyro",
     "id": 36,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Klee_icon.png",
@@ -289,7 +289,7 @@
   },
   {
     "name": "Kujou Sara",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Electro",
     "id": 37,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Kujou%2520Sara_icon.png",
@@ -297,7 +297,7 @@
   },
   {
     "name": "Kuki Shinobu",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Electro",
     "id": 38,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Kuki%2520Shinobu_icon.png",
@@ -305,7 +305,7 @@
   },
   {
     "name": "Layla",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Cryo",
     "id": 39,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/11/15/35428890/48a495acadaf37f12d0a7f653d85bd83_7085430198590697354.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -313,7 +313,7 @@
   },
   {
     "name": "Lisa",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Electro",
     "id": 40,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Lisa_icon.png",
@@ -321,7 +321,7 @@
   },
   {
     "name": "Lynette",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Anemo",
     "id": 42,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/14/35428890/436e6f2b9b9006bfe511a98093259daf_7192025380861185061.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -329,7 +329,7 @@
   },
   {
     "name": "Lyney",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Pyro",
     "id": 43,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/11/35428890/e343d4442cc3b8e243f0d528bb715f75_1232011243947476013.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -337,7 +337,7 @@
   },
   {
     "name": "Mika",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Cryo",
     "id": 44,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/03/21/35428890/da13e3b1a2c6c0e5892b201cec735f9b_6392765476968311284.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -345,7 +345,7 @@
   },
   {
     "name": "Mona",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Hydro",
     "id": 45,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Mona_icon.png",
@@ -353,7 +353,7 @@
   },
   {
     "name": "Nahida",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Dendro",
     "id": 46,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/10/29/35428890/f29490bddc56b4a6773b6c5003bbb853_9091170755650648414.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -361,7 +361,7 @@
   },
   {
     "name": "Navia",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Geo",
     "id": 47,
     "icon": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/18/35428890/3fc7580c01a9e622692402889706c4db_8301615651200775487.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -369,7 +369,7 @@
   },
   {
     "name": "Neuvillette",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Hydro",
     "id": 48,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/09/26/35428890/0513aa7f482dbb4778545d02f94956fe_7540616405773975535.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -377,7 +377,7 @@
   },
   {
     "name": "Nilou",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Hydro",
     "id": 49,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/10/10/35428890/586d726f9ebda3506c78beaaa41f13b6_5916447718992361520.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -385,7 +385,7 @@
   },
   {
     "name": "Ningguang",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Geo",
     "id": 50,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Ningguang_icon.png",
@@ -393,7 +393,7 @@
   },
   {
     "name": "Noelle",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Geo",
     "id": 51,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Noelle_icon.png",
@@ -401,7 +401,7 @@
   },
   {
     "name": "Qiqi",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Cryo",
     "id": 52,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Qiqi_icon.png",
@@ -409,7 +409,7 @@
   },
   {
     "name": "Raiden Shogun",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Electro",
     "id": 53,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Raiden%2520Shogun_icon.png",
@@ -417,7 +417,7 @@
   },
   {
     "name": "Razor",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Electro",
     "id": 54,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Razor_icon.png",
@@ -425,7 +425,7 @@
   },
   {
     "name": "Rosaria",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Cryo",
     "id": 55,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Rosaria_icon.png",
@@ -433,7 +433,7 @@
   },
   {
     "name": "Sangonomiya Kokomi",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Hydro",
     "id": 56,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Sangonomiya%2520Kokomi_icon.png",
@@ -441,7 +441,7 @@
   },
   {
     "name": "Sayu",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Anemo",
     "id": 57,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Sayu_icon.png",
@@ -449,7 +449,7 @@
   },
   {
     "name": "Shenhe",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Cryo",
     "id": 58,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Shenhe_icon.png",
@@ -458,7 +458,7 @@
 
   {
     "name": "Sigewinne",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Hydro",
     "id": 60,
     "icon": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/06/26/35428890/2d607aa4d729030ea04f79919257e311_1172370997840232141.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -466,7 +466,7 @@
   },
   {
     "name": "Sucrose",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Anemo",
     "id": 61,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Sucrose_icon.png",
@@ -474,7 +474,7 @@
   },
   {
     "name": "Childe",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Hydro",
     "id": 62,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Tartaglia_icon.png",
@@ -482,7 +482,7 @@
   },
   {
     "name": "Thoma",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Pyro",
     "id": 63,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Thoma_icon.png",
@@ -490,7 +490,7 @@
   },
   {
     "name": "Tighnari",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Dendro",
     "id": 64,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/08/22/35428890/497dd6fac3d3c652a367c67428550747_306268558608889633.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -498,7 +498,7 @@
   },
   {
     "name": "Traveler",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Adaptive",
     "id": 65,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Traveler_icon.png",
@@ -506,7 +506,7 @@
   },
   {
     "name": "Venti",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Anemo",
     "id": 66,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Venti_icon.png",
@@ -514,7 +514,7 @@
   },
   {
     "name": "Wanderer",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Anemo",
     "id": 67,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/12/05/35428890/24d97a22be742fb732ea96f625d1faac_2495743636540582085.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -522,7 +522,7 @@
   },
   {
     "name": "Wriothesley",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Cryo",
     "id": 68,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/10/15/35428890/31a0eb2dec5d69ca8dd7616572136b8b_8886987124386670150.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -530,7 +530,7 @@
   },
   {
     "name": "Xiangling",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Pyro",
     "id": 69,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Xiangling_icon.png",
@@ -538,7 +538,7 @@
   },
   {
     "name": "Xianyun",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Anemo",
     "id": 70,
     "icon": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/01/29/35428890/2c2be27f8876e9435ab8c8b933b8408c_7973851751945394462.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -546,7 +546,7 @@
   },
   {
     "name": "Xiao",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Anemo",
     "id": 71,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Xiao_icon.png",
@@ -554,7 +554,7 @@
   },
   {
     "name": "Xingqiu",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Hydro",
     "id": 72,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Xingqiu_icon.png",
@@ -562,7 +562,7 @@
   },
   {
     "name": "Xinyan",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Pyro",
     "id": 73,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Xinyan_icon.png",
@@ -570,7 +570,7 @@
   },
   {
     "name": "Yae Miko",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Electro",
     "id": 74,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Yae%2520Miko_icon.png",
@@ -578,7 +578,7 @@
   },
   {
     "name": "Yanfei",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Pyro",
     "id": 75,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Yanfei_icon.png",
@@ -586,7 +586,7 @@
   },
   {
     "name": "Yaoyao",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Dendro",
     "id": 76,
     "icon": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/01/15/35428890/5bc9df1fb67391e4c8080da3d855de53_8974356791001371659.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -594,7 +594,7 @@
   },
   {
     "name": "Yelan",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Hydro",
     "id": 77,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Yelan_icon.png",
@@ -602,7 +602,7 @@
   },
   {
     "name": "Yoimiya",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Pyro",
     "id": 78,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Yoimiya_icon.png",
@@ -610,7 +610,7 @@
   },
   {
     "name": "Yun Jin",
-    "rarity": 4,
+    "rarity": "four",
     "element": "Geo",
     "id": 79,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Yun%2520Jin_icon.png",
@@ -618,7 +618,7 @@
   },
   {
     "name": "Zhongli",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Geo",
     "id": 80,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Zhongli_icon.png",
@@ -626,7 +626,7 @@
   },
   {
     "name": "Chiori",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Geo",
     "id": 81,
     "icon": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/03/11/35428890/5470f90694af13476e49be7b8346e2b1_5366587928381003654.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -634,7 +634,7 @@
   },
   {
     "name": "Arlecchino",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Pyro",
     "id": 82,
     "icon": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/22/35428890/672e65470bfd14b664596c2a7f7eaaf8_7046130387894981792.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -642,7 +642,7 @@
   },
   {
     "name": "Ayaka",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Cryo",
     "id": 83,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Kamisato%2520Ayaka_icon.png",
@@ -650,7 +650,7 @@
   },
   {
     "name": "Ayato",
-    "rarity": 5,
+    "rarity": "five",
     "element": "Cryo",
     "id": 59,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Kamisato%2520Ayato_icon.png",

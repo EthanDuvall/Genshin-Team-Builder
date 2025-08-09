@@ -1,4 +1,4 @@
-import "./Builder.css";
+import "./Builder.scss";
 import { useEffect, useState } from "react";
 import fetchedTeams from "../../util/teams.json";
 function Builder({ chosenCharacter, ownedCharacters }) {

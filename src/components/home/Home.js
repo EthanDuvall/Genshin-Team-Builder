@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "./Home.css";
+import "./Home.scss";
 import { useEffect, useState } from "react";
 function Home({
   allCharacters,
@@ -8,7 +8,6 @@ function Home({
   setOwnedCharacters,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const navigate = useNavigate();
 
@@ -62,7 +61,8 @@ function Home({
   }
 
   function displayCharacters() {
-    if (ownedCharacters) {
+    if (ownedCharacters.length) {
+      console.log(ownedCharacters);
       const displayedCharacters = ownedCharacters.map((char) => {
         const foundCharacter = allCharacters.find((character) => {
           return character.id == char.id;
@@ -95,7 +95,12 @@ function Home({
         </div>
       );
     } else {
-      return <h2> No characters found - add them or refresh the page </h2>;
+      return (
+        <div className="noChar">
+          <h2>To get started add your characters!</h2>
+          <h2>No characters found - add them or refresh the page</h2>
+        </div>
+      );
     }
   }
 
@@ -113,10 +118,9 @@ function Home({
   }
 
   return (
-    <div>
-      <h2>To get started add your characters!</h2>
-      <div>{displayCharacters()}</div>
-      <button
+    <>
+      {displayCharacters()}
+      <button className="characters-btn"
         onClick={() => {
           if (isModalOpen) {
             setIsModalOpen(false);
@@ -148,7 +152,7 @@ function Home({
           <input type="submit" />
         </form>
       )}
-    </div>
+    </>
   );
 }
 
