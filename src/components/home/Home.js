@@ -9,39 +9,52 @@ function Home({
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
+  const [selectedIds, setSelectedIds] = useState([]);
   const navigate = useNavigate();
 
   function characterForm() {
-    var formContents = [];
-    var formCharacters = [];
-    // Checking to ensure that theres no dupeable characters added to the owned list
-
-    allCharacters.map((character) => {
-      if (!ownedCharacters.includes(character)) {
-        formCharacters.push(character);
-      }
-    });
-    // Just formatting the character objects into a input for the form
-    formCharacters.map((character) => {
-      formContents.push(
-        <>
+    return allCharacters.map((character) => {
+      //const isOwned = ownedCharacters.some((owned) => owned.id == character.id);
+      const isSelected = selectedIds.includes(String(character.id));
+      return (
+        <div key={character.id} style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
           <input
             type="checkbox"
-            id={character.id}
+            id={`character-checkbox-${character.id}`}
             name="characters"
             className={`rarity${character.rarity} characters`}
             value={character.id}
+            onChange={handleCheckboxChange}
+            checked={isSelected}
           />
-
-          <label htmlFor={character.id}>
-            {<h3>{character.name}</h3>}
-            {<img src={character.icon} alt={`Icon of ${character.name}`} />}
+          <label
+            htmlFor={`character-checkbox-${character.id}`}
+            className={ `${isSelected ? "selected" : ""} ${`${character.rarity}`} character` }
+          >
+            <h3>{character.name}</h3>
+            <img src={character.icon} alt={`Icon of ${character.name}`} />
           </label>
-        </>
+        </div>
       );
     });
+  }
 
-    return formContents;
+  function handleCheckboxChange(e) {
+    const { value, checked } = e.target;
+    setSelectedIds((prev) =>
+      checked ? [...prev, value] : prev.filter((id) => id !== value)
+    );
+    // Update ownedCharacters immediately for UX, or do it on submit for batch update
+    if (checked) {
+      // Add to owned if not already present
+      if (!ownedCharacters.some((char) => String(char.id) === value)) {
+        const charToAdd = allCharacters.find((char) => String(char.id) === value);
+        setOwnedCharacters([...ownedCharacters, charToAdd]);
+      }
+    } else {
+      // Remove from owned
+      setOwnedCharacters(ownedCharacters.filter((char) => String(char.id) !== value));
+    }
   }
 
   function selectCharacter(id) {
@@ -87,11 +100,11 @@ function Home({
         }
       });
       return (
-        <div>
+        <div className="characterContainer">
           <h2>
             Now select a character by clicking on them to start building a team!{" "}
           </h2>
-          <div>{displayedCharacters}</div>
+          <div className="characterHolder">{displayedCharacters}</div>
         </div>
       );
     } else {
@@ -107,50 +120,49 @@ function Home({
   function handleFormSubmit(e) {
     e.preventDefault();
     setIsModalOpen(false);
-    const formData = new FormData(e.target);
-    const selected = formData.getAll("characters");
-    const owned = selected.map((character) => {
-      return allCharacters.find((charObj) => {
-        return charObj.id == character;
-      });
-    });
-    setOwnedCharacters([...ownedCharacters, ...owned]);
+    // No need to update ownedCharacters here, it's handled in handleCheckboxChange
   }
 
   return (
     <>
-      {displayCharacters()}
-      <button className="characters-btn"
-        onClick={() => {
-          if (isModalOpen) {
-            setIsModalOpen(false);
-          } else {
-            setIsModalOpen(true);
-          }
-        }}
-      >
-        Characters
-      </button>
-      {selectedCharacter}
-      {selectedCharacter && (
-        <button
+      <div className={`main-content${isModalOpen ? " blurred" : ""}`}>
+        {displayCharacters()}
+        <button className="characters-btn"
           onClick={() => {
-            navigate("/build");
+            if (isModalOpen) {
+              setIsModalOpen(false);
+            } else {
+              // Sync selectedIds with ownedCharacters when opening modal
+              setSelectedIds(ownedCharacters.map((char) => String(char.id)));
+              setIsModalOpen(true);
+            }
           }}
         >
-          Create me a team!
+          Characters
         </button>
-      )}
-
+        {selectedCharacter}
+        {selectedCharacter && (
+          <button
+            onClick={() => {
+              navigate("/build");
+            }}
+          >
+            Create me a team!
+          </button>
+        )}
+      </div>
       {isModalOpen && (
-        <form
-          onSubmit={(e) => {
-            handleFormSubmit(e);
-          }}
-        >
+        <div className="characterModal">
           {characterForm()}
-          <input type="submit" />
-        </form>
+          <button
+            type="button"
+            className="close-modal-btn"
+            onClick={() => setIsModalOpen(false)}
+            style={{marginTop: '1.5rem', alignSelf: 'flex-end'}}
+          >
+            Close
+          </button>
+        </div>
       )}
     </>
   );
