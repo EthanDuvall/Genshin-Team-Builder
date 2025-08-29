@@ -65,7 +65,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80vw;
-  height: 75vh;
+  height: 73vh;
   max-width: 1100px;
   max-height: 80vh;
   background: $page-color;
@@ -76,7 +76,7 @@
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 1.5rem;
   overflow-y: auto;
-  z-index: 1000;
+  z-index: 10;
 }
 
 .characterModal input[type="checkbox"] {
@@ -134,16 +134,21 @@
 }
 .close-modal-btn {
   position: absolute;
-  top: 87%;
-  left: 47%;
+  top: 85%;
+  left: 46%;
   background: transparent;
   border: none;
   cursor: pointer;
-  font-size: 1.5rem;
-  color: #4b5563;
+  font-size: 2rem;
+  color: black;
   transition: color 0.2s;
-
+  z-index: 11;
   &:hover {
     color: #1f2937;
   }
+}
+
+.characterHolder{
+  display: grid;
+  width: 50%;
 }

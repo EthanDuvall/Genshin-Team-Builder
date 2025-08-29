@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./Home.scss";
 import { useEffect, useState } from "react";
+
 function Home({
   allCharacters,
   setChosenCharacter,
@@ -17,7 +18,14 @@ function Home({
       //const isOwned = ownedCharacters.some((owned) => owned.id == character.id);
       const isSelected = selectedIds.includes(String(character.id));
       return (
-        <div key={character.id} style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <div
+          key={character.id}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <input
             type="checkbox"
             id={`character-checkbox-${character.id}`}
@@ -29,7 +37,9 @@ function Home({
           />
           <label
             htmlFor={`character-checkbox-${character.id}`}
-            className={ `${isSelected ? "selected" : ""} ${`${character.rarity}`} character` }
+            className={`${
+              isSelected ? "selected" : ""
+            } ${`${character.rarity}`} character`}
           >
             <h3>{character.name}</h3>
             <img src={character.icon} alt={`Icon of ${character.name}`} />
@@ -48,12 +58,16 @@ function Home({
     if (checked) {
       // Add to owned if not already present
       if (!ownedCharacters.some((char) => String(char.id) === value)) {
-        const charToAdd = allCharacters.find((char) => String(char.id) === value);
+        const charToAdd = allCharacters.find(
+          (char) => String(char.id) === value
+        );
         setOwnedCharacters([...ownedCharacters, charToAdd]);
       }
     } else {
       // Remove from owned
-      setOwnedCharacters(ownedCharacters.filter((char) => String(char.id) !== value));
+      setOwnedCharacters(
+        ownedCharacters.filter((char) => String(char.id) !== value)
+      );
     }
   }
 
@@ -117,17 +131,14 @@ function Home({
     }
   }
 
-  function handleFormSubmit(e) {
-    e.preventDefault();
-    setIsModalOpen(false);
-    // No need to update ownedCharacters here, it's handled in handleCheckboxChange
-  }
+  
 
   return (
     <>
       <div className={`main-content${isModalOpen ? " blurred" : ""}`}>
         {displayCharacters()}
-        <button className="characters-btn"
+        <button
+          className="characters-btn"
           onClick={() => {
             if (isModalOpen) {
               setIsModalOpen(false);
@@ -152,17 +163,17 @@ function Home({
         )}
       </div>
       {isModalOpen && (
-        <div className="characterModal">
-          {characterForm()}
+        <>
+          <div className="characterModal">{characterForm()}</div>
           <button
             type="button"
             className="close-modal-btn"
             onClick={() => setIsModalOpen(false)}
-            style={{marginTop: '1.5rem', alignSelf: 'flex-end'}}
+            style={{ marginTop: "1.5rem", alignSelf: "flex-end" }}
           >
             Close
           </button>
-        </div>
+        </>
       )}
     </>
   );
