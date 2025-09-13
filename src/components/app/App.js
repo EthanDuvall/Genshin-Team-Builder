@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import characters from "../../util/characters.json";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom"; // <-- import useNavigate
 import Home from "../home/Home";
 import Builder from "../builder/Builder";
 import "./App.scss";
@@ -9,6 +9,7 @@ function App() {
   const [allCharacters, setAllCharacters] = useState();
   const [chosenCharacter, setChosenCharacter] = useState(null);
   const [ownedCharacters, setOwnedCharacters] = useState([]);
+  const navigate = useNavigate(); // <-- add this
 
   useEffect(() => {
     getCharacters();
@@ -22,7 +23,12 @@ function App() {
   return (
     <>
       <header>
-        <h1>Genshin Team Builder</h1>
+        <h1
+          style={{ cursor: "pointer" }}
+          onClick={() => navigate("/")}
+        >
+          Genshin Team Builder
+        </h1>
       </header>
       <div>
         <Routes>

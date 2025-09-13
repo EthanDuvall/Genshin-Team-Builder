@@ -13,6 +13,17 @@ function Home({
   const [selectedIds, setSelectedIds] = useState([]);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (
+      ownedCharacters.length === 0 ||
+      !ownedCharacters.some(
+        (char) => selectedCharacter && char.id === selectedCharacter.props.id
+      )
+    ) {
+      setSelectedCharacter(null);
+    }
+  }, [ownedCharacters]);
+
   function characterForm() {
     return allCharacters.map((character) => {
       //const isOwned = ownedCharacters.some((owned) => owned.id == character.id);
@@ -30,7 +41,7 @@ function Home({
             type="checkbox"
             id={`character-checkbox-${character.id}`}
             name="characters"
-            className={`rarity${character.rarity} characters`}
+            className={`rarity${character.rarity} `}
             value={character.id}
             onChange={handleCheckboxChange}
             checked={isSelected}
@@ -39,7 +50,7 @@ function Home({
             htmlFor={`character-checkbox-${character.id}`}
             className={`${
               isSelected ? "selected" : ""
-            } ${`${character.rarity}`} character`}
+            } ${`${character.rarity}`} characters`}
           >
             <h3>{character.name}</h3>
             <img src={character.icon} alt={`Icon of ${character.name}`} />
@@ -131,11 +142,9 @@ function Home({
     }
   }
 
-  
-
   return (
     <>
-      <div className={`main-content${isModalOpen ? " blurred" : ""}`}>
+      <div className={`main-content`}>
         {displayCharacters()}
         <button
           className="characters-btn"
@@ -151,15 +160,18 @@ function Home({
         >
           Characters
         </button>
-        {selectedCharacter}
+
         {selectedCharacter && (
-          <button
-            onClick={() => {
-              navigate("/build");
-            }}
-          >
-            Create me a team!
-          </button>
+          <div className="selected-character-display">
+            {selectedCharacter}
+            <button
+              onClick={() => {
+                navigate("/build");
+              }}
+            >
+              Create me a team!
+            </button>
+          </div>
         )}
       </div>
       {isModalOpen && (
@@ -171,7 +183,7 @@ function Home({
             onClick={() => setIsModalOpen(false)}
             style={{ marginTop: "1.5rem", alignSelf: "flex-end" }}
           >
-            Close
+            X
           </button>
         </>
       )}

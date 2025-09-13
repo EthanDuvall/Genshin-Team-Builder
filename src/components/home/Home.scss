@@ -1,6 +1,6 @@
 @import "../../styles/variables";
 
-.characterModal label h3 {
+.characters h3 {
   margin: 0 0 0.5rem 0;
   font-size: 1.1rem;
   color: #5b21b6;
@@ -18,7 +18,6 @@
   white-space: normal;
   overflow: hidden;
 }
-
 
 .noChar {
   background-color: $page-color;
@@ -40,6 +39,9 @@
 }
 .characters-btn {
   display: block;
+  top: 77%;
+  left: 72%;
+  position: absolute;
   margin: 2rem auto 0 auto;
   background-color: $page-color;
   color: #fff;
@@ -58,10 +60,9 @@
   }
 }
 
-
 .characterModal {
   position: fixed;
-  top:55%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80vw;
@@ -70,7 +71,7 @@
   max-height: 80vh;
   background: $page-color;
   border-radius: 18px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
   padding: 2.5rem 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -83,10 +84,10 @@
   display: none;
 }
 
-.characterModal label {
+.characters {
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
   padding: 1.2rem 0.5rem 1rem 0.5rem;
   display: flex;
   flex-direction: column;
@@ -98,44 +99,46 @@
   min-width: 120px;
 }
 
-.characterModal label.selected {
+.characters.selected {
   border: 2.5px solid #a78bfa;
   background: linear-gradient(135deg, #b1a7e0 60%, #f3e8ff 100%);
-  box-shadow: 0 4px 18px rgba(167,139,250,0.13);
+  box-shadow: 0 4px 18px rgba(167, 139, 250, 0.13);
 }
 
-.characterModal label:hover {
-  box-shadow: 0 4px 18px rgba(167,139,250,0.18);
+.characters:hover {
+  box-shadow: 0 4px 18px rgba(167, 139, 250, 0.18);
   border: 2px solid #c4b5fd;
 }
 
-.characterModal label img {
+.characters img {
   width: 90%;
   height: 110px;
   object-fit: contain;
   margin: 0.75rem 0 0 0;
   border-radius: 12px;
   background: #fff;
-  box-shadow: 0 1px 4px rgba(167,139,250,0.08);
+  box-shadow: 0 1px 4px rgba(167, 139, 250, 0.08);
   display: block;
   align-self: center;
   padding: 0.5rem;
 }
 
-.characterModal::-webkit-scrollbar {
+.characterModal::-webkit-scrollbar .characterHolder::-webkit-scrollbar {
   width: 10px;
 }
-.characterModal::-webkit-scrollbar-thumb {
+.characterModal::-webkit-scrollbar-thumb
+  .characterHolder::-webkit-scrollbar-thumb {
   background: #e0e7ff;
   border-radius: 8px;
 }
-.characterModal::-webkit-scrollbar-track {
+.characterModal::-webkit-scrollbar-track
+  .characterHolder::-webkit-scrollbar-track {
   background: transparent;
 }
 .close-modal-btn {
   position: absolute;
-  top: 85%;
-  left: 46%;
+  top: 9%;
+  left: 80%;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -143,12 +146,73 @@
   color: black;
   transition: color 0.2s;
   z-index: 11;
+  border-radius: 50%;
+  background-color: #c45050;
+  padding: 0.5%;
   &:hover {
     color: #1f2937;
   }
 }
 
-.characterHolder{
+.characterHolder {
   display: grid;
-  width: 50%;
+  grid-template-columns: repeat(3, 1fr);
+  max-height: 65vh;
+  overflow-y: auto;
+  width: 100%;
+  gap: 1.5rem;
+  padding-right: 2%; // Add space between characters and scrollbar
+  box-sizing: border-box;
+}
+
+.characterContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  background-color: $page-color;
+  width: 30%;
+  height: 30%;
+  padding: 1%;
+  padding-right: 0%;
+  border-radius: 18px;
+  text-align: center;
+}
+
+.main-content {
+  margin-top: 3%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.selected-character-display {
+  margin-left: 2%;
+  margin-top: 3%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  width: 30%;
+  height: 30%;
+  padding: 1%;
+  padding-right: 0%;
+  button {
+    margin: 2rem auto 0 auto;
+    background-color: $page-color;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+    transition: background 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      background-color: darken($page-color, 7%);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    }
+  }
 }
