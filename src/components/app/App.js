@@ -9,6 +9,7 @@ function App() {
   const [allCharacters, setAllCharacters] = useState();
   const [chosenCharacter, setChosenCharacter] = useState(null);
   const [ownedCharacters, setOwnedCharacters] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate(); // <-- add this
 
   useEffect(() => {
@@ -16,17 +17,16 @@ function App() {
   }, []);
 
   function getCharacters() {
-    //wip until i create my own api
+  
     setAllCharacters(characters);
   }
-
+  function closeError() {
+    setErrorMessage("");
+  }
   return (
     <>
       <header>
-        <h1
-          style={{ cursor: "pointer" }}
-          onClick={() => navigate("/")}
-        >
+        <h1 style={{ cursor: "pointer" }} onClick={() => navigate("/")}>
           Genshin Team Builder
         </h1>
       </header>
@@ -49,11 +49,21 @@ function App() {
               <Builder
                 chosenCharacter={chosenCharacter}
                 ownedCharacters={ownedCharacters}
+                setErrorMessage={setErrorMessage}
               />
             }
           />
         </Routes>
       </div>
+      {errorMessage && (
+        <div className="errorModal">
+          <h2>Error</h2>
+          <p>{errorMessage}</p>
+          <button className="closeModalBtn" onClick={closeError}>
+            Close
+          </button>
+        </div>
+      )}
     </>
   );
 }

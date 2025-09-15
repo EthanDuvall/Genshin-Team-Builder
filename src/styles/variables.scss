@@ -1,1 +1,18 @@
-$page-color:#a78bfa;
+$page-color: #F3F3F0;      
+$primary: #686568;        
+$secondary: #c8cac9;       
+$triary: #99BAD2;
+
+// Add these for consistency:
+$primary-light: lighten($primary, 25%);
+$primary-bg: #fff;
+$text-dark: #222;
+$text-light: #888;
+$border-color: $secondary;
+$shadow: 0 2px 10px rgba(104, 101, 104, 0.07);
+$shadow-hover: 0 4px 16px rgba(104, 101, 104, 0.13);
+
+// Error modal variables
+$error-title-color: #e53935;      // A strong red for error titles
+$error-btn-bg: $primary;          // Use your primary color for the button background
+$error-btn-text: #fff;            // White text for contrast

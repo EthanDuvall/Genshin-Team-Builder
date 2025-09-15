@@ -3,7 +3,7 @@
 .characters h3 {
   margin: 0 0 0.5rem 0;
   font-size: 1.1rem;
-  color: #5b21b6;
+  color: $primary;
   font-weight: 600;
   letter-spacing: 0.01em;
   max-width: 100%;
@@ -22,28 +22,29 @@
 .noChar {
   background-color: $page-color;
   padding: 2rem 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  box-shadow: $shadow;
   text-align: center;
-  color: black;
-  font-size: 1.2rem;
+  color: $text-dark;
+  font-size: 1.15rem;
   font-weight: 500;
-  max-width: 650px;
+  max-width: 600px;
   margin: 2rem auto;
   letter-spacing: 0.02em;
   transition: box-shadow 0.2s;
-  border: 1px solid #e0e0e0;
+  border: 1.5px solid $border-color;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .characters-btn {
   display: block;
+  position: absolute;
   top: 77%;
   left: 72%;
-  position: absolute;
   margin: 2rem auto 0 auto;
-  background-color: $page-color;
+  background-color: $primary;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -55,8 +56,8 @@
   transition: background 0.2s, box-shadow 0.2s;
 
   &:hover {
-    background-color: darken($page-color, 7%);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    background-color: darken($primary, 7%);
+    box-shadow: $shadow-hover;
   }
 }
 
@@ -70,14 +71,15 @@
   max-width: 1100px;
   max-height: 80vh;
   background: $page-color;
-  border-radius: 18px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  border-radius: 20px;
+  box-shadow: $shadow;
   padding: 2.5rem 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 1.5rem;
   overflow-y: auto;
   z-index: 10;
+  color: $text-dark; // Consistent text color
 }
 
 .characterModal input[type="checkbox"] {
@@ -86,8 +88,8 @@
 
 .characters {
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+  border-radius: 14px;
+  box-shadow: $shadow;
   padding: 1.2rem 0.5rem 1rem 0.5rem;
   display: flex;
   flex-direction: column;
@@ -97,17 +99,41 @@
   transition: border 0.2s, box-shadow 0.2s, background 0.2s;
   min-height: 180px;
   min-width: 120px;
-}
+  color: $text-dark; // Consistent text color
 
-.characters.selected {
-  border: 2.5px solid #a78bfa;
-  background: linear-gradient(135deg, #b1a7e0 60%, #f3e8ff 100%);
-  box-shadow: 0 4px 18px rgba(167, 139, 250, 0.13);
-}
+  &.selected {
+    border: 2.5px solid $primary-light;
+    background: linear-gradient(135deg, $primary-light 60%, $primary-bg 100%);
+    box-shadow: $shadow-hover;
+    color: $text-dark; // Consistent text color
+  }
 
-.characters:hover {
-  box-shadow: 0 4px 18px rgba(167, 139, 250, 0.18);
-  border: 2px solid #c4b5fd;
+  &:hover {
+    box-shadow: $shadow-hover;
+    border: 2px solid $primary-light;
+    color: $text-dark; // Consistent text color
+  }
+
+  &.rarityfive {
+    background: linear-gradient(
+      135deg,
+      #e2d069 60%,
+      #fffbe6 100%
+    ); // Gold/yellow for 5-star
+    border-color: #ffd700;
+  }
+
+  &.rarityfour {
+    background: linear-gradient(
+      135deg,
+      #b491f6 60%,
+      #ede9fe 100%
+    ); // Purple for 4-star
+    border-color: #b491f6;
+  }
+  &.raritysix {
+    background: linear-gradient(135deg, #f87171 60%, #fee2e2 100%);
+  }
 }
 
 .characters img {
@@ -117,40 +143,48 @@
   margin: 0.75rem 0 0 0;
   border-radius: 12px;
   background: #fff;
-  box-shadow: 0 1px 4px rgba(167, 139, 250, 0.08);
+  box-shadow: 0 1px 4px rgba(124, 58, 237, 0.08);
   display: block;
   align-self: center;
   padding: 0.5rem;
 }
 
-.characterModal::-webkit-scrollbar .characterHolder::-webkit-scrollbar {
+.characterModal::-webkit-scrollbar,
+.characterHolder::-webkit-scrollbar {
   width: 10px;
 }
-.characterModal::-webkit-scrollbar-thumb
-  .characterHolder::-webkit-scrollbar-thumb {
-  background: #e0e7ff;
+.characterModal::-webkit-scrollbar-thumb,
+.characterHolder::-webkit-scrollbar-thumb {
+  background: $primary-bg;
   border-radius: 8px;
 }
-.characterModal::-webkit-scrollbar-track
-  .characterHolder::-webkit-scrollbar-track {
+.characterModal::-webkit-scrollbar-track,
+.characterHolder::-webkit-scrollbar-track {
   background: transparent;
 }
+
 .close-modal-btn {
   position: absolute;
-  top: 9%;
-  left: 80%;
-  background: transparent;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: #fff;
   border: none;
   cursor: pointer;
-  font-size: 2rem;
-  color: black;
-  transition: color 0.2s;
+  font-size: 1.8rem;
+  color: $text-light;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
   z-index: 11;
   border-radius: 50%;
-  background-color: #c45050;
-  padding: 0.5%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 0.4rem 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   &:hover {
-    color: #1f2937;
+    background: $primary-bg;
+    color: $primary;
+    box-shadow: $shadow-hover;
   }
 }
 
@@ -161,8 +195,9 @@
   overflow-y: auto;
   width: 100%;
   gap: 1.5rem;
-  padding-right: 2%; // Add space between characters and scrollbar
+  padding-right: 2%;
   box-sizing: border-box;
+  color: $text-dark; // Consistent text color
 }
 
 .characterContainer {
@@ -174,32 +209,36 @@
   width: 30%;
   height: 30%;
   padding: 1%;
-  padding-right: 0%;
   border-radius: 18px;
   text-align: center;
+  color: $text-dark; // Consistent text color
 }
 
 .main-content {
   margin-top: 3%;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
+  gap: 2rem;
+  color: $text-dark; // Consistent text color
 }
+
 .selected-character-display {
   margin-left: 2%;
   margin-top: 3%;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-direction: column;
   align-items: center;
   margin-bottom: 1rem;
   width: 30%;
   height: 30%;
   padding: 1%;
-  padding-right: 0%;
+  color: $text-dark; // Consistent text color
+
   button {
     margin: 2rem auto 0 auto;
-    background-color: $page-color;
+    background-color: $primary;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -211,8 +250,8 @@
     transition: background 0.2s, box-shadow 0.2s;
 
     &:hover {
-      background-color: darken($page-color, 7%);
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      background-color: darken($primary, 7%);
+      box-shadow: $shadow-hover;
     }
   }
 }

@@ -1,12 +1,21 @@
 import "./Builder.scss";
 import { useEffect, useState } from "react";
 import fetchedTeams from "../../util/teams.json";
-function Builder({ chosenCharacter, ownedCharacters }) {
+import { useNavigate } from "react-router-dom";
+function Builder({ chosenCharacter, ownedCharacters, setErrorMessage }) {
   const [teams, setTeams] = useState(null);
   const [generatedTeams, setGeneratedTeams] = useState(null);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
-    fetchTeams(chosenCharacter);
+    if (!chosenCharacter) {
+      navigate("/");
+      setErrorMessage("No character chosen");
+      return;
+    } else {
+      fetchTeams(chosenCharacter);
+    }
   }, [chosenCharacter]);
 
   useEffect(() => {
@@ -16,8 +25,11 @@ function Builder({ chosenCharacter, ownedCharacters }) {
   }, [teams]);
 
   function fetchTeams(character) {
-    //Placeholder until api is created it will use the same logic without having to search an array
-    setTeams(fetchedTeams.find((team) => team.id === character.id));
+    if (!fetchedTeams.find((team) => team.id === character.id)) {
+      setErrorMessage("No teams found for this character");
+    } else {
+      setTeams(fetchedTeams.find((team) => team.id === character.id));
+    }
   }
 
   function checkIfOwned(character) {
@@ -36,7 +48,6 @@ function Builder({ chosenCharacter, ownedCharacters }) {
       onfielder++;
     }
     team.forEach((character) => {
-      console.log(team, "team");
       if (character.fieldRole === "on-field") {
         onfielder++;
       }
@@ -51,19 +62,29 @@ function Builder({ chosenCharacter, ownedCharacters }) {
   }
 
   function generateTeam(r1, r2, r3) {
-    var team = [];
-    if (r1.length === 0 || r2.length === 0 || r3.length === 0) {
-      return false;
-    }
+    let attempts = 0;
+    while (attempts <= 25) {
+      if (r1.length === 0 || r2.length === 0 || r3.length === 0) {
+        setErrorMessage("no characters available");
+        return false;
+      }
 
-    team.push(r1[Math.floor(Math.random() * r1.length)]);
-    team.push(r2[Math.floor(Math.random() * r2.length)]);
-    team.push(r3[Math.floor(Math.random() * r3.length)]);
-    if (checkTeams(team)) {
-      return team;
-    } else {
-      return generateTeam(r1, r2, r3);
+      const team = [
+        r1[Math.floor(Math.random() * r1.length)],
+        r2[Math.floor(Math.random() * r2.length)],
+        r3[Math.floor(Math.random() * r3.length)],
+      ];
+
+      if (checkTeams(team)) {
+        return team;
+      }
+      attempts++;
+      if (attempts > 10) {
+        setErrorMessage("too many attempts");
+        break;
+      }
     }
+    return false;
   }
 
   function formTeams() {
@@ -78,6 +99,8 @@ function Builder({ chosenCharacter, ownedCharacters }) {
       const team = generateTeam(element1, element2, element3);
       if (team) {
         teamCombos.push(team);
+      } else {
+        setErrorMessage("Could not generate team");
       }
     });
     if (teamCombos.length === 0) {
@@ -88,51 +111,44 @@ function Builder({ chosenCharacter, ownedCharacters }) {
     }
   }
   function displayTeams() {
-    return generatedTeams.map((team) => {
-      return (
-        <div className="team">
-          <div
-            id={team[0].id}
-            className={`rarity ${team[0].rarity} characters`}
-          >
-            <img src={team[0].icon} alt={`Icon of ${team[0].name}`} />
-            <h3>{team[0].name}</h3>
-            <p>{team[0].element}</p>
+    return (
+      <div className="teams-list">
+        {generatedTeams.map((team, idx) => (
+          <div className="team" key={idx}>
+            {team.map((member) => (
+              <div
+                key={member.id}
+                id={member.id}
+                className={`characters rarity${member.rarity}`}
+              >
+                <img src={member.icon} alt={`Icon of ${member.name}`} />
+                <h3>{member.name}</h3>
+                <p>{member.element}</p>
+              </div>
+            ))}
           </div>
-          <div
-            id={team[1].id}
-            className={`rarity ${team[1].rarity} characters`}
-          >
-            <img src={team[1].icon} alt={`Icon of ${team[1].name}`} />
-            <h3>{team[1].name}</h3>
-            <p>{team[1].element}</p>
-          </div>
-          <div
-            id={team[2].id}
-            className={`rarity${team[2].rarity} characters `}
-          >
-            <img src={team[2].icon} alt={`Icon of ${team[2].name}`} />
-            <h3>{team[2].name}</h3>
-            <p>{team[2].element}</p>
-          </div>
-        </div>
-      );
-    });
-  }
-  return (
-    <div>
-      <div
-        id={chosenCharacter.id}
-        className={`rarity${chosenCharacter.rarity} characters`}
-      >
-        <img
-          src={chosenCharacter.icon}
-          alt={`Icon of ${chosenCharacter.name}`}
-        />
-        <h3>{chosenCharacter.fieldRole}</h3>
-        <h3>{chosenCharacter.name}</h3>
-        <p>{chosenCharacter.element}</p>
+        ))}
       </div>
+    );
+  }
+
+  return (
+    <div className="builder-container">
+      <button className="return-btn" onClick={() => navigate(-1)}>
+        Return
+      </button>
+      {chosenCharacter && (
+        <div className="chosen-character">
+          <img
+            src={chosenCharacter.icon}
+            alt={`Icon of ${chosenCharacter.name}`}
+          />
+          <h3>{chosenCharacter.fieldRole}</h3>
+          <h3>{chosenCharacter.name}</h3>
+          <p>{chosenCharacter.element}</p>
+        </div>
+      )}
+      <h2>Generated Teams</h2>
       {generatedTeams && displayTeams()}
     </div>
   );

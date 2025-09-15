@@ -1,0 +1,158 @@
+@import "../../styles/variables";
+
+// Main builder container
+.builder-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5rem 0 2rem 0;
+  min-height: 80vh;
+  background: $page-color;
+}
+
+// Return button
+.builder-container > .return-btn {
+  margin-bottom: 2rem;
+  background-color: $primary;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+  transition: background 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    background-color: darken($primary, 7%);
+    box-shadow: $shadow-hover;
+  }
+}
+
+
+.chosen-character {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: $shadow;
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  min-width: 220px;
+  max-width: 320px;
+  color: $primary;
+
+  img {
+    width: 90%;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(167, 139, 250, 0.08);
+    padding: 0.5rem;
+  }
+
+  h3,
+  p {
+    margin: 0.3rem 0;
+    text-align: center;
+    color: $primary;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+}
+
+
+.teams-list {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+
+.team {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: $shadow;
+  padding: 1.2rem 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  align-items: stretch;
+  gap: 1.2rem;
+  min-width: 340px;
+  max-width: 520px;
+
+  width: 520px; 
+  height: 270px; 
+  box-sizing: border-box; 
+}
+
+// Team member card
+.team .characters {
+  
+  border-radius: 12px;
+  box-shadow: $shadow;
+  color: $primary;
+  border: 2px solid transparent;
+  padding: 1rem 0.5rem 0.8rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  min-height: 170px;
+  transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+
+  img {
+    width: 85%;
+    height: 90px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(167, 139, 250, 0.08);
+    padding: 0.4rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+    color: $primary;
+    margin: 0.2rem 0 0.1rem 0;
+    text-align: center;
+    font-weight: 600;
+    line-height: 1.2;
+    min-height: 2.2em;
+    max-width: 100%;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    overflow: hidden;
+  }
+
+  p {
+    margin: 0.1rem 0 0 0;
+    font-size: 0.95rem;
+    color: $text-light;
+    text-align: center;
+  }
+}
+
+// Rarity backgrounds (optional, match your theme)
+.team .rarityfive {
+  background: linear-gradient(135deg, #ffe082 60%, #fffde7 100%);
+}
+.team .rarityfour {
+  background: linear-gradient(135deg, $triary 60%, #ede9fe 100%);
+}
+.team .raritysix {
+  background: linear-gradient(135deg, #f87171 60%, #fee2e2 100%);
+}

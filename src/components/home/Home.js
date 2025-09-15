@@ -14,6 +14,11 @@ function Home({
   const navigate = useNavigate();
 
   useEffect(() => {
+    if(sessionStorage.getItem("ownedCharacters")){
+      setOwnedCharacters(JSON.parse(sessionStorage.getItem("ownedCharacters")));
+    }
+  },[]);
+  useEffect(() => {
     if (
       ownedCharacters.length === 0 ||
       !ownedCharacters.some(
@@ -22,6 +27,8 @@ function Home({
     ) {
       setSelectedCharacter(null);
     }
+    sessionStorage.clear('ownedCharacters');
+    sessionStorage.setItem("ownedCharacters", JSON.stringify(ownedCharacters));
   }, [ownedCharacters]);
 
   function characterForm() {
@@ -100,7 +107,6 @@ function Home({
 
   function displayCharacters() {
     if (ownedCharacters.length) {
-      console.log(ownedCharacters);
       const displayedCharacters = ownedCharacters.map((char) => {
         const foundCharacter = allCharacters.find((character) => {
           return character.id == char.id;
