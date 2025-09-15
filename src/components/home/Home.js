@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./Home.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 function Home({
   allCharacters,
@@ -13,51 +13,58 @@ function Home({
   const [selectedIds, setSelectedIds] = useState([]);
   const navigate = useNavigate();
 
+  // Load ownedCharacters from sessionStorage on mount
   useEffect(() => {
-    if(sessionStorage.getItem("ownedCharacters")){
-      setOwnedCharacters(JSON.parse(sessionStorage.getItem("ownedCharacters")));
-    }
-  },[]);
+    const stored = sessionStorage.getItem("ownedCharacters");
+    if (stored) setOwnedCharacters(JSON.parse(stored));
+    // eslint-disable-next-line
+  }, []);
+
+  // Save ownedCharacters to sessionStorage when it changes
   useEffect(() => {
+    sessionStorage.setItem("ownedCharacters", JSON.stringify(ownedCharacters));
+    // Deselect character if it's no longer owned
     if (
       ownedCharacters.length === 0 ||
-      !ownedCharacters.some(
-        (char) => selectedCharacter && char.id === selectedCharacter.props.id
-      )
+      (selectedCharacter &&
+        !ownedCharacters.some((char) => char.id === selectedCharacter.props.id))
     ) {
       setSelectedCharacter(null);
     }
-    sessionStorage.clear('ownedCharacters');
-    sessionStorage.setItem("ownedCharacters", JSON.stringify(ownedCharacters));
+    // eslint-disable-next-line
   }, [ownedCharacters]);
 
+  // Memoized owned character objects for display
+  const ownedCharacterObjs = useMemo(
+    () =>
+      ownedCharacters
+        .map((char) =>
+          allCharacters.find((character) => character.id === char.id)
+        )
+        .filter(Boolean),
+    [ownedCharacters, allCharacters]
+  );
+
+  // Modal: character selection grid
   function characterForm() {
     return allCharacters.map((character) => {
-      //const isOwned = ownedCharacters.some((owned) => owned.id == character.id);
       const isSelected = selectedIds.includes(String(character.id));
       return (
-        <div
-          key={character.id}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
+        <div key={character.id} className="character-form-item">
           <input
             type="checkbox"
             id={`character-checkbox-${character.id}`}
             name="characters"
-            className={`rarity${character.rarity} `}
+            className={`rarity${character.rarity}`}
             value={character.id}
             onChange={handleCheckboxChange}
             checked={isSelected}
           />
           <label
             htmlFor={`character-checkbox-${character.id}`}
-            className={`${
+            className={`characters ${character.rarity} ${
               isSelected ? "selected" : ""
-            } ${`${character.rarity}`} characters`}
+            }`}
           >
             <h3>{character.name}</h3>
             <img src={character.icon} alt={`Icon of ${character.name}`} />
@@ -66,15 +73,19 @@ function Home({
       );
     });
   }
+  
+  function deSelectCharacter() {
+    setChosenCharacter(null);
+    setSelectedCharacter(null);
+  }
 
+  // Handle checkbox changes in modal
   function handleCheckboxChange(e) {
     const { value, checked } = e.target;
     setSelectedIds((prev) =>
       checked ? [...prev, value] : prev.filter((id) => id !== value)
     );
-    // Update ownedCharacters immediately for UX, or do it on submit for batch update
     if (checked) {
-      // Add to owned if not already present
       if (!ownedCharacters.some((char) => String(char.id) === value)) {
         const charToAdd = allCharacters.find(
           (char) => String(char.id) === value
@@ -82,22 +93,30 @@ function Home({
         setOwnedCharacters([...ownedCharacters, charToAdd]);
       }
     } else {
-      // Remove from owned
       setOwnedCharacters(
         ownedCharacters.filter((char) => String(char.id) !== value)
       );
     }
   }
 
+  // Select a character for team building
   function selectCharacter(id) {
-    const char = ownedCharacters.find((character) => {
-      return character.id == id;
-    });
-    //Sets this variable for when it transitions to the /build
+    if (selectedCharacter && selectedCharacter.props.id === id) {
+      console.log("Deselecting character", id);
+      setChosenCharacter(null);
+      setSelectedCharacter(null);
+      return;
+    }
+    const char = ownedCharacters.find((character) => character.id === id);
     setChosenCharacter(char);
-
     setSelectedCharacter(
-      <div id={char.id} className={`rarity${char.rarity} characters selected`}>
+      <div
+        onClick={() => {
+          deSelectCharacter(char.id);
+        }}
+        id={char.id}
+        className={`rarity${char.rarity} characters selected`}
+      >
         <img src={char.icon} alt={`Icon of ${char.name}`} />
         <h3>{char.name}</h3>
         <p>{char.element}</p>
@@ -105,37 +124,28 @@ function Home({
     );
   }
 
+  // Display owned characters or prompt to add
   function displayCharacters() {
-    if (ownedCharacters.length) {
-      const displayedCharacters = ownedCharacters.map((char) => {
-        const foundCharacter = allCharacters.find((character) => {
-          return character.id == char.id;
-        });
-        if (foundCharacter) {
-          return (
-            <div
-              onClick={() => {
-                selectCharacter(foundCharacter.id);
-              }}
-              id={foundCharacter.id}
-              className={`rarity${foundCharacter.rarity} characters`}
-            >
-              <img
-                src={foundCharacter.icon}
-                alt={`Icon of ${foundCharacter.name}`}
-              />
-              <h3>{foundCharacter.name}</h3>
-              <p>{foundCharacter.element}</p>
-            </div>
-          );
-        }
-      });
+    if (ownedCharacterObjs.length) {
       return (
         <div className="characterContainer">
           <h2>
-            Now select a character by clicking on them to start building a team!{" "}
+            Now select a character by clicking on them to start building a team!
           </h2>
-          <div className="characterHolder">{displayedCharacters}</div>
+          <div className="characterHolder">
+            {ownedCharacterObjs.map((char) => (
+              <div
+                key={char.id}
+                onClick={() => selectCharacter(char.id)}
+                id={char.id}
+                className={`rarity${char.rarity} characters`}
+              >
+                <img src={char.icon} alt={`Icon of ${char.name}`} />
+                <h3>{char.name}</h3>
+                <p>{char.element}</p>
+              </div>
+            ))}
+          </div>
         </div>
       );
     } else {
@@ -148,33 +158,26 @@ function Home({
     }
   }
 
+  // Open modal and sync selectedIds with ownedCharacters
+  function openModal() {
+    setSelectedIds(ownedCharacters.map((char) => String(char.id)));
+    setIsModalOpen(true);
+  }
+
   return (
     <>
-      <div className={`main-content`}>
+      <div className="main-content">
         {displayCharacters()}
         <button
           className="characters-btn"
-          onClick={() => {
-            if (isModalOpen) {
-              setIsModalOpen(false);
-            } else {
-              // Sync selectedIds with ownedCharacters when opening modal
-              setSelectedIds(ownedCharacters.map((char) => String(char.id)));
-              setIsModalOpen(true);
-            }
-          }}
+          onClick={() => (isModalOpen ? setIsModalOpen(false) : openModal())}
         >
           Characters
         </button>
-
         {selectedCharacter && (
           <div className="selected-character-display">
             {selectedCharacter}
-            <button
-              onClick={() => {
-                navigate("/build");
-              }}
-            >
+            <button onClick={() => navigate("/build")}>
               Create me a team!
             </button>
           </div>
@@ -187,7 +190,6 @@ function Home({
             type="button"
             className="close-modal-btn"
             onClick={() => setIsModalOpen(false)}
-            style={{ marginTop: "1.5rem", alignSelf: "flex-end" }}
           >
             X
           </button>

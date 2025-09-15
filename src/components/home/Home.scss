@@ -41,8 +41,8 @@
 .characters-btn {
   display: block;
   position: absolute;
-  top: 77%;
-  left: 72%;
+  top: 62%;
+  left: 63%;
   margin: 2rem auto 0 auto;
   background-color: $primary;
   color: #fff;
@@ -188,6 +188,8 @@
   width: 30%;
   height: 30%;
   padding: 1%;
+  margin-left: 5%;
+  margin-right:10%;
   border-radius: 18px;
   text-align: center;
   color: $text-dark; // Consistent text color
@@ -196,7 +198,6 @@
 .main-content {
   margin-top: 3%;
   display: flex;
-  justify-content: space-around;
   align-items: flex-start;
   gap: 2rem;
   color: $text-dark; // Consistent text color
