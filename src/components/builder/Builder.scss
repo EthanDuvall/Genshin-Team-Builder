@@ -8,31 +8,30 @@
   padding: 2.5rem 0 2rem 0;
   min-height: 80vh;
   background: $page-color;
-}
+  button {
+    margin-bottom: 2rem;
+    background-color: $primary;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+    transition: background 0.2s, box-shadow 0.2s;
 
-// Return button
-.builder-container > .return-btn {
-  margin-bottom: 2rem;
-  background-color: $primary;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 0.75rem 2rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
-  transition: background 0.2s, box-shadow 0.2s;
-
-  &:hover {
-    background-color: darken($primary, 7%);
-    box-shadow: $shadow-hover;
+    &:hover {
+      background-color: darken($primary, 7%);
+      box-shadow: $shadow-hover;
+    }
   }
 }
 
+// Return button
 
 .chosen-character {
-  background: #fff;
+  background: $triary;
   border-radius: 18px;
   box-shadow: $shadow;
   padding: 1.5rem 2rem;
@@ -65,7 +64,6 @@
   }
 }
 
-
 .teams-list {
   display: flex;
   flex-direction: row;
@@ -76,27 +74,25 @@
   flex-wrap: wrap;
 }
 
-
 .team {
   background: #fff;
   border-radius: 16px;
   box-shadow: $shadow;
   padding: 1.2rem 1.5rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr);
   align-items: stretch;
   gap: 1.2rem;
   min-width: 340px;
   max-width: 520px;
 
-  width: 520px; 
-  height: 270px; 
-  box-sizing: border-box; 
+  width: 520px;
+  height: 270px;
+  box-sizing: border-box;
 }
 
 // Team member card
 .team .characters {
-  
   border-radius: 12px;
   box-shadow: $shadow;
   color: $primary;
@@ -147,12 +143,3 @@
 }
 
 // Rarity backgrounds (optional, match your theme)
-.team .rarityfive {
-  background: linear-gradient(135deg, #ffe082 60%, #fffde7 100%);
-}
-.team .rarityfour {
-  background: linear-gradient(135deg, $triary 60%, #ede9fe 100%);
-}
-.team .raritysix {
-  background: linear-gradient(135deg, #f87171 60%, #fee2e2 100%);
-}

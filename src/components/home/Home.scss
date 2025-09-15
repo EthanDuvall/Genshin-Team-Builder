@@ -103,7 +103,7 @@
 
   &.selected {
     border: 2.5px solid $primary-light;
-    background: linear-gradient(135deg, $primary-light 60%, $primary-bg 100%);
+    background: linear-gradient(135deg, $triary 60%, $primary-bg 100%);
     box-shadow: $shadow-hover;
     color: $text-dark; // Consistent text color
   }
@@ -112,27 +112,6 @@
     box-shadow: $shadow-hover;
     border: 2px solid $primary-light;
     color: $text-dark; // Consistent text color
-  }
-
-  &.rarityfive {
-    background: linear-gradient(
-      135deg,
-      #e2d069 60%,
-      #fffbe6 100%
-    ); // Gold/yellow for 5-star
-    border-color: #ffd700;
-  }
-
-  &.rarityfour {
-    background: linear-gradient(
-      135deg,
-      #b491f6 60%,
-      #ede9fe 100%
-    ); // Purple for 4-star
-    border-color: #b491f6;
-  }
-  &.raritysix {
-    background: linear-gradient(135deg, #f87171 60%, #fee2e2 100%);
   }
 }
 
@@ -254,4 +233,13 @@
       box-shadow: $shadow-hover;
     }
   }
+}
+.rarityfive {
+  background: linear-gradient(135deg, #ffe082 60%, #fffde7 100%);
+}
+.rarityfour {
+  background: linear-gradient(135deg, #bf8dd3 60%, #fffde7 100%);
+}
+.raritysix {
+  background: linear-gradient(135deg, #f87171 60%, #fffde7 100%);
 }

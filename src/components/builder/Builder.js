@@ -43,22 +43,11 @@ function Builder({ chosenCharacter, ownedCharacters, setErrorMessage }) {
   }
 
   function checkTeams(team) {
-    var onfielder = 0;
-    if (chosenCharacter.fieldRole === "on-field") {
-      onfielder++;
-    }
-    team.forEach((character) => {
-      if (character.fieldRole === "on-field") {
-        onfielder++;
-      }
-    });
-    const hasDuplicates =
-      new Set(team.map((char) => char.name)).size !== team.length;
-    if (onfielder === 1 && !hasDuplicates) {
-      return true;
-    } else {
-      return false;
-    }
+    const onFieldCount =
+      (chosenCharacter.fieldRole === "on-field" ? 1 : 0) +
+      team.filter((c) => c.fieldRole === "on-field").length;
+    const hasDuplicates = new Set(team.map((c) => c.name)).size !== team.length;
+    return onFieldCount === 1 && !hasDuplicates;
   }
 
   function generateTeam(r1, r2, r3) {
@@ -123,7 +112,10 @@ function Builder({ chosenCharacter, ownedCharacters, setErrorMessage }) {
               >
                 <img src={member.icon} alt={`Icon of ${member.name}`} />
                 <h3>{member.name}</h3>
-                <p>{member.element}</p>
+                <p>
+                  {member.element} <br />
+                  {member.fieldRole}
+                </p>
               </div>
             ))}
           </div>
@@ -148,6 +140,7 @@ function Builder({ chosenCharacter, ownedCharacters, setErrorMessage }) {
           <p>{chosenCharacter.element}</p>
         </div>
       )}
+      <button className="generate-btn" onClick={formTeams}>Generate Again</button>
       <h2>Generated Teams</h2>
       {generatedTeams && displayTeams()}
     </div>

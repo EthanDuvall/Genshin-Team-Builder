@@ -43,17 +43,16 @@
     "Hydro": ["Furina", "Yelan", "Xingqiu", "Nilou", "Sangonomiya Kokomi"],
     "Pyro": ["Thoma", "Dehya", "Bennett"],
     "Geo": ["Zhongli", "Albedo", "Chiori"],
-    "Anemo": ["Sucrose", "Kazuha", "Xianyun", "Jean"],
-    "Cryo": ["Diona", "Layla"]
+    "Anemo": ["Sucrose", "Kazuha", "Xianyun", "Jean"]
   },
   {
     "id": 21,
     "core": ["Eula"],
     "teams": [
-      ["Electro", "Cyro", "Hydro"],
-      ["Electro", "Cyro", "Cryo"],
-      ["Electro", "Cyro", "Geo"],
-      ["Cyro", "Hydro", "Hydro"],
+      ["Electro", "Cryo", "Hydro"],
+      ["Electro", "Cryo", "Cryo"],
+      ["Electro", "Cryo", "Geo"],
+      ["Cryo", "Hydro", "Hydro"],
       ["Electro", "Cryo", "Pyro"]
     ],
     "Electro": ["Raiden", "Fischl", "Kuki Shinobu", "Dori", "Beidou", "Lisa"],
@@ -69,7 +68,7 @@
       ["Hydro", "Hydro", "Geo"],
       ["Hydro", "Hydro", "Anemo"],
       ["Hydro", "Pyro", "Anemo"],
-      ["Hydro", "Cyro", "Cryo"],
+      ["Hydro", "Cryo", "Cryo"],
       ["Hydro", "Geo", "Geo"],
       ["Hydro", "Electro", "Anemo"],
       ["Hydro", "Electro", "Geo"],
