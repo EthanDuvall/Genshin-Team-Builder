@@ -205,7 +205,7 @@
     "element": "Cryo",
     "id": 26,
     "icon": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/03/12/35428890/797ded201635d241d358c307e9e7417f_464481961971717418.png?x-oss-process=image%2Fformat%2Cwebp",
-    "fieldRole": "on-field"
+    "fieldRole": "flex"
   },
   {
     "name": "Gorou",
@@ -413,7 +413,7 @@
     "element": "Electro",
     "id": 53,
     "icon": "https://wiki.hoyolab.com/_ipx/f_webp/https://bbs.hoyolab.com/hoyowiki/picture/character/Raiden%2520Shogun_icon.png",
-    "fieldRole": "on-field"
+    "fieldRole": "flex"
   },
   {
     "name": "Razor",

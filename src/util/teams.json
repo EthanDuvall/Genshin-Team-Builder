@@ -45,5 +45,53 @@
     "Geo": ["Zhongli", "Albedo", "Chiori"],
     "Anemo": ["Sucrose", "Kazuha", "Xianyun", "Jean"],
     "Cryo": ["Diona", "Layla"]
+  },
+  {
+    "id": 21,
+    "core": ["Eula"],
+    "teams": [
+      ["Electro", "Cyro", "Hydro"],
+      ["Electro", "Cyro", "Cryo"],
+      ["Electro", "Cyro", "Geo"],
+      ["Cyro", "Hydro", "Hydro"],
+      ["Electro", "Cryo", "Pyro"]
+    ],
+    "Electro": ["Raiden", "Fischl", "Kuki Shinobu", "Dori", "Beidou", "Lisa"],
+    "Hydro": ["Yelan", "Xingqiu"],
+    "Pyro": ["Bennett"],
+    "Geo": ["Zhongli"],
+    "Cryo": ["Mika", "Rosaria", "Shenhe", "Diona", "Layla"]
+  },
+  {
+    "id": 29,
+    "core": ["Hu tao"],
+    "teams": [
+      ["Hydro", "Hydro", "Geo"],
+      ["Hydro", "Hydro", "Anemo"],
+      ["Hydro", "Pyro", "Anemo"],
+      ["Hydro", "Cyro", "Cryo"],
+      ["Hydro", "Geo", "Geo"],
+      ["Hydro", "Electro", "Anemo"],
+      ["Hydro", "Electro", "Geo"],
+      ["Pyro", "Pyro", "Anemo"]
+    ],
+    "Electro": ["Fischl"],
+    "Hydro": ["Xingqiu", "Yelan", "Mona", "Candace"],
+    "Pyro": ["Thoma", "Bennett", "Yanfei", "Xangling", "Amber", "Dehya"],
+    "Geo": ["Zhongli", "Albedo", "Yun Jin"],
+    "Anemo": ["Kazuha", "Sucrose", "Heizou"],
+    "Cryo": ["Layla", "Diona", "Kaeya", "Rosaria", "Ganyu"]
+  },
+  {
+    "id": null,
+    "core": [""],
+    "teams": [["", "", ""]],
+    "Electro": [],
+    "Dendro": [],
+    "Hydro": [],
+    "Pyro": [],
+    "Geo": [],
+    "Anemo": [],
+    "Cryo": []
   }
 ]
