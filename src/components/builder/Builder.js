@@ -37,6 +37,10 @@ function Builder({ chosenCharacter, ownedCharacters, setErrorMessage }) {
   }
 
   function grabCharacters(element) {
+    console.log(teams[element]);
+    if (!teams[element] || !Array.isArray(teams[element])) {
+      return [];
+    }
     return teams[element]
       .map((character) => checkIfOwned(character))
       .filter(Boolean);
@@ -73,6 +77,7 @@ function Builder({ chosenCharacter, ownedCharacters, setErrorMessage }) {
         break;
       }
     }
+    setErrorMessage("no valid team found");
     return false;
   }
 
@@ -88,8 +93,6 @@ function Builder({ chosenCharacter, ownedCharacters, setErrorMessage }) {
       const team = generateTeam(element1, element2, element3);
       if (team) {
         teamCombos.push(team);
-      } else {
-        setErrorMessage("Could not generate team");
       }
     });
     if (teamCombos.length === 0) {
@@ -99,6 +102,7 @@ function Builder({ chosenCharacter, ownedCharacters, setErrorMessage }) {
       return;
     }
   }
+
   function displayTeams() {
     return (
       <div className="teams-list">
@@ -107,7 +111,6 @@ function Builder({ chosenCharacter, ownedCharacters, setErrorMessage }) {
             {team.map((member) => (
               <div
                 key={member.id}
-                id={member.id}
                 className={`characters rarity${member.rarity}`}
               >
                 <img src={member.icon} alt={`Icon of ${member.name}`} />
@@ -129,20 +132,24 @@ function Builder({ chosenCharacter, ownedCharacters, setErrorMessage }) {
       <button className="return-btn" onClick={() => navigate(-1)}>
         Return
       </button>
-      {chosenCharacter && (
-        <div className="chosen-character">
-          <img
-            src={chosenCharacter.icon}
-            alt={`Icon of ${chosenCharacter.name}`}
-          />
-          <h3>{chosenCharacter.fieldRole}</h3>
-          <h3>{chosenCharacter.name}</h3>
-          <p>{chosenCharacter.element}</p>
-        </div>
-      )}
-      <button className="generate-btn" onClick={formTeams}>Generate Again</button>
-      <h2>Generated Teams</h2>
-      {generatedTeams && displayTeams()}
+      <div className="builder-container">
+        {chosenCharacter && (
+          <div className="chosen-character">
+            <img
+              src={chosenCharacter.icon}
+              alt={`Icon of ${chosenCharacter.name}`}
+            />
+            <h3>{chosenCharacter.fieldRole}</h3>
+            <h3>{chosenCharacter.name}</h3>
+            <p>{chosenCharacter.element}</p>
+          </div>
+        )}
+        <button className="generate-btn" onClick={formTeams}>
+          Generate Again
+        </button>
+        <h2>Generated Teams</h2>
+        {generatedTeams && displayTeams()}
+      </div>
     </div>
   );
 }

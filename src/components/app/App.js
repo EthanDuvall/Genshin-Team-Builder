@@ -14,6 +14,7 @@ function App() {
 
   useEffect(() => {
     getCharacters();
+    setErrorMessage("Hi the only support characters are Eula, Hu Tao, Ayaka, and Alhaitham for now")
   }, []);
 
   function getCharacters() {

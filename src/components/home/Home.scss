@@ -41,7 +41,7 @@
 .characters-btn {
   display: block;
   position: absolute;
-  top: 62%;
+  top: 70%;
   left: 63%;
   margin: 2rem auto 0 auto;
   background-color: $primary;
@@ -61,25 +61,64 @@
   }
 }
 
-.characterModal {
+.characterModal-wrapper {
   position: fixed;
   top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80vw;
-  height: 73vh;
   max-width: 1100px;
   max-height: 80vh;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   background: $page-color;
   border-radius: 20px;
   box-shadow: $shadow;
   padding: 2.5rem 2rem;
+  gap: 1rem;
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 2.2rem;
+  color: $primary;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  z-index: 11;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 0.2rem 0.7rem 0.3rem 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid $primary-light;
+
+  &:hover {
+    background: $primary;
+    color: #fff;
+    box-shadow: $shadow-hover;
+    border-color: $primary;
+  }
+}
+
+.characterModal {
+  width: 100%;
+  height: 60vh;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 1.5rem;
   overflow-y: auto;
-  z-index: 10;
   color: $text-dark; // Consistent text color
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
 }
 
 .characterModal input[type="checkbox"] {
@@ -142,37 +181,13 @@
   background: transparent;
 }
 
-.close-modal-btn {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  background: #fff;
-  border: none;
-  cursor: pointer;
-  font-size: 1.8rem;
-  color: $text-light;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  z-index: 11;
-  border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  padding: 0.4rem 0.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &:hover {
-    background: $primary-bg;
-    color: $primary;
-    box-shadow: $shadow-hover;
-  }
-}
-
 .characterHolder {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  max-height: 65vh;
+  max-height: 63vh;
   overflow-y: auto;
   width: 100%;
+
   gap: 1.5rem;
   padding-right: 2%;
   box-sizing: border-box;
@@ -189,14 +204,14 @@
   height: 30%;
   padding: 1%;
   margin-left: 5%;
-  margin-right:10%;
+  margin-right: 10%;
   border-radius: 18px;
   text-align: center;
   color: $text-dark; // Consistent text color
 }
 
 .main-content {
-  margin-top: 3%;
+  margin-top: 1;
   display: flex;
   align-items: flex-start;
   gap: 2rem;
@@ -205,7 +220,7 @@
 
 .selected-character-display {
   margin-left: 2%;
-  margin-top: 3%;
+  margin-top: 10%;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -243,4 +258,47 @@
 }
 .raritysix {
   background: linear-gradient(135deg, #f87171 60%, #fffde7 100%);
+}
+
+.filter-bar {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+
+  button {
+    background: $secondary;
+    color: $text-dark;
+    border: none;
+    border-radius: 6px;
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+    &.active {
+      background: $primary;
+      color: #fff;
+    }
+  }
+
+  &.vertical {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+
+    .filter-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.2rem;
+    }
+  }
+}
+
+.filter-bar-row {
+  // Default row style for horizontal layout
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }

@@ -11,6 +11,11 @@ function Home({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const [selectedIds, setSelectedIds] = useState([]);
+  // Separate filter state for owned container and modal
+  const [elementFilter, setElementFilter] = useState("all");
+  const [rarityFilter, setRarityFilter] = useState("all");
+  const [modalElementFilter, setModalElementFilter] = useState("all");
+  const [modalRarityFilter, setModalRarityFilter] = useState("all");
   const navigate = useNavigate();
 
   // Load ownedCharacters from sessionStorage on mount
@@ -45,35 +50,87 @@ function Home({
     [ownedCharacters, allCharacters]
   );
 
-  // Modal: character selection grid
-  function characterForm() {
-    return allCharacters.map((character) => {
-      const isSelected = selectedIds.includes(String(character.id));
-      return (
-        <div key={character.id} className="character-form-item">
-          <input
-            type="checkbox"
-            id={`character-checkbox-${character.id}`}
-            name="characters"
-            className={`rarity${character.rarity}`}
-            value={character.id}
-            onChange={handleCheckboxChange}
-            checked={isSelected}
-          />
-          <label
-            htmlFor={`character-checkbox-${character.id}`}
-            className={`characters ${character.rarity} ${
-              isSelected ? "selected" : ""
-            }`}
-          >
-            <h3>{character.name}</h3>
-            <img src={character.icon} alt={`Icon of ${character.name}`} />
-          </label>
+  // --- Filter bar component ---
+  function FilterBar({
+    vertical = false,
+    filterState,
+    setFilterState,
+    setElement,
+    setRarity,
+  }) {
+    return (
+      <div className={`filter-bar${vertical ? " vertical" : ""}`}>
+        <div className="filter-bar-row">
+          <span>Element:</span>
+          {elements.map((el) => (
+            <button
+              key={el}
+              className={filterState.element === el ? "active" : ""}
+              onClick={() => {
+                if (setElement) setElement(el);
+                else setFilterState((prev) => ({ ...prev, element: el }));
+              }}
+            >
+              {el}
+            </button>
+          ))}
         </div>
-      );
-    });
+        <div className="filter-bar-row">
+          <span>Rarity:</span>
+          {rarities.map((r) => (
+            <button
+              key={r}
+              className={filterState.rarity === r ? "active" : ""}
+              onClick={() => {
+                if (setRarity) setRarity(r);
+                else setFilterState((prev) => ({ ...prev, rarity: r }));
+              }}
+            >
+              {r}
+            </button>
+          ))}
+        </div>
+      </div>
+    );
   }
-  
+
+  // --- Modal: character selection grid ---
+  function characterForm() {
+    return (
+      <>
+        {filterCharacters(
+          allCharacters,
+          modalElementFilter,
+          modalRarityFilter
+        ).map((character) => {
+          const isSelected = selectedIds.includes(String(character.id));
+          return (
+            <div key={character.id} className="character-form-item">
+              <input
+                type="checkbox"
+                id={`character-checkbox-${character.id}`}
+                name="characters"
+                className={`rarity${character.rarity}`}
+                value={character.id}
+                onChange={handleCheckboxChange}
+                checked={isSelected}
+              />
+              <label
+                htmlFor={`character-checkbox-${character.id}`}
+                className={`characters ${character.rarity} ${
+                  isSelected ? "selected" : ""
+                }`}
+              >
+                <h3>{character.name}</h3>
+                <img src={character.icon} alt={`Icon of ${character.name}`} />
+              </label>
+            </div>
+          );
+        })}
+      </>
+    );
+  }
+
   function deSelectCharacter() {
     setChosenCharacter(null);
     setSelectedCharacter(null);
@@ -124,7 +181,7 @@ function Home({
     );
   }
 
-  // Display owned characters or prompt to add
+  // --- Owned characters grid ---
   function displayCharacters() {
     if (ownedCharacterObjs.length) {
       return (
@@ -132,8 +189,20 @@ function Home({
           <h2>
             Now select a character by clicking on them to start building a team!
           </h2>
+          <FilterBar
+            vertical
+            filterState={{ element: elementFilter, rarity: rarityFilter }}
+            setFilterState={({ element, rarity }) => {
+              setElementFilter(element ?? elementFilter);
+              setRarityFilter(rarity ?? rarityFilter);
+            }}
+          />
           <div className="characterHolder">
-            {ownedCharacterObjs.map((char) => (
+            {filterCharacters(
+              ownedCharacterObjs,
+              elementFilter,
+              rarityFilter
+            ).map((char) => (
               <div
                 key={char.id}
                 onClick={() => selectCharacter(char.id)}
@@ -158,10 +227,32 @@ function Home({
     }
   }
 
-  // Open modal and sync selectedIds with ownedCharacters
+  // Open modal and sync selectedIds with ownedCharacters, reset modal filters
   function openModal() {
     setSelectedIds(ownedCharacters.map((char) => String(char.id)));
+    setModalElementFilter("all");
+    setModalRarityFilter("all");
     setIsModalOpen(true);
+  }
+
+  const elements = [
+    "all",
+    "Anemo",
+    "Cryo",
+    "Dendro",
+    "Electro",
+    "Geo",
+    "Hydro",
+    "Pyro",
+  ];
+  const rarities = ["all", "five", "four", "six"];
+
+  function filterCharacters(list, element, rarity) {
+    return list.filter(
+      (char) =>
+        (element === "all" || char.element === element) &&
+        (rarity === "all" || char.rarity === rarity)
+    );
   }
 
   return (
@@ -185,14 +276,25 @@ function Home({
       </div>
       {isModalOpen && (
         <>
-          <div className="characterModal">{characterForm()}</div>
-          <button
-            type="button"
-            className="close-modal-btn"
-            onClick={() => setIsModalOpen(false)}
-          >
-            X
-          </button>
+          <div className="characterModal-wrapper">
+            <button
+              type="button"
+              className="close-modal-btn"
+              onClick={() => setIsModalOpen(false)}
+              aria-label="Close modal"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <FilterBar
+              filterState={{
+                element: modalElementFilter,
+                rarity: modalRarityFilter,
+              }}
+              setElement={setModalElementFilter}
+              setRarity={setModalRarityFilter}
+            />
+            <div className="characterModal">{characterForm()}</div>
+          </div>
         </>
       )}
     </>
