@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import characters from "../../util/characters.json";
+import {fetchCharacters} from "../../util/fetchRequests.js"
 import { Routes, Route, useNavigate } from "react-router-dom"; // <-- import useNavigate
 import Home from "../home/Home";
 import Builder from "../builder/Builder";
@@ -12,15 +12,19 @@ function App() {
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate(); // <-- add this
 
-  useEffect(() => {
-    getCharacters();
-    setErrorMessage("Hi the only support characters are Eula, Hu Tao, Ayaka, and Alhaitham for now")
-  }, []);
+ useEffect(() => {
+   if (sessionStorage.getItem("characters")) {
+     setAllCharacters(JSON.parse(sessionStorage.getItem("characters")));
+   } else {
+     fetchCharacters(setErrorMessage).then((data) => {
+       if (data) {
+         setAllCharacters(data);
+         sessionStorage.setItem("characters", JSON.stringify(data));
+       }
+     });
+   }
+ }, []);
 
-  function getCharacters() {
-  
-    setAllCharacters(characters);
-  }
   function closeError() {
     setErrorMessage("");
   }

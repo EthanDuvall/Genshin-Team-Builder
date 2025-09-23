@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./Home.scss";
 import { useEffect, useState, useMemo } from "react";
-
+import FilterBar from "../filter/FilterBar";
 function Home({
   allCharacters,
   setChosenCharacter,
@@ -11,90 +11,26 @@ function Home({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
   const [selectedIds, setSelectedIds] = useState([]);
-  // Separate filter state for owned container and modal
   const [elementFilter, setElementFilter] = useState("all");
   const [rarityFilter, setRarityFilter] = useState("all");
   const [modalElementFilter, setModalElementFilter] = useState("all");
   const [modalRarityFilter, setModalRarityFilter] = useState("all");
   const navigate = useNavigate();
 
-  // Load ownedCharacters from sessionStorage on mount
-  useEffect(() => {
-    const stored = sessionStorage.getItem("ownedCharacters");
-    if (stored) setOwnedCharacters(JSON.parse(stored));
-    // eslint-disable-next-line
-  }, []);
 
-  // Save ownedCharacters to sessionStorage when it changes
-  useEffect(() => {
-    sessionStorage.setItem("ownedCharacters", JSON.stringify(ownedCharacters));
-    // Deselect character if it's no longer owned
-    if (
-      ownedCharacters.length === 0 ||
-      (selectedCharacter &&
-        !ownedCharacters.some((char) => char.id === selectedCharacter.props.id))
-    ) {
-      setSelectedCharacter(null);
-    }
-    // eslint-disable-next-line
-  }, [ownedCharacters]);
 
-  // Memoized owned character objects for display
   const ownedCharacterObjs = useMemo(
     () =>
       ownedCharacters
         .map((char) =>
-          allCharacters.find((character) => character.id === char.id)
+            allCharacters[String(char.id)]
         )
         .filter(Boolean),
     [ownedCharacters, allCharacters]
   );
 
-  // --- Filter bar component ---
-  function FilterBar({
-    vertical = false,
-    filterState,
-    setFilterState,
-    setElement,
-    setRarity,
-  }) {
-    return (
-      <div className={`filter-bar${vertical ? " vertical" : ""}`}>
-        <div className="filter-bar-row">
-          <span>Element:</span>
-          {elements.map((el) => (
-            <button
-              key={el}
-              className={filterState.element === el ? "active" : ""}
-              onClick={() => {
-                if (setElement) setElement(el);
-                else setFilterState((prev) => ({ ...prev, element: el }));
-              }}
-            >
-              {el}
-            </button>
-          ))}
-        </div>
-        <div className="filter-bar-row">
-          <span>Rarity:</span>
-          {rarities.map((r) => (
-            <button
-              key={r}
-              className={filterState.rarity === r ? "active" : ""}
-              onClick={() => {
-                if (setRarity) setRarity(r);
-                else setFilterState((prev) => ({ ...prev, rarity: r }));
-              }}
-            >
-              {r}
-            </button>
-          ))}
-        </div>
-      </div>
-    );
-  }
 
-  // --- Modal: character selection grid ---
+
   function characterForm() {
     return (
       <>
@@ -122,7 +58,11 @@ function Home({
                 }`}
               >
                 <h3>{character.name}</h3>
-                <img src={character.icon} alt={`Icon of ${character.name}`} />
+                <img
+                  src={`https://brainy-leigh-genshinteambuilder-abb9e887.koyeb.app/${character.icon}`}
+                  alt={`Icon of ${character.name}`}
+                />
+
               </label>
             </div>
           );
@@ -136,7 +76,7 @@ function Home({
     setSelectedCharacter(null);
   }
 
-  // Handle checkbox changes in modal
+
   function handleCheckboxChange(e) {
     const { value, checked } = e.target;
     setSelectedIds((prev) =>
@@ -144,9 +84,7 @@ function Home({
     );
     if (checked) {
       if (!ownedCharacters.some((char) => String(char.id) === value)) {
-        const charToAdd = allCharacters.find(
-          (char) => String(char.id) === value
-        );
+        const charToAdd = allCharacters[value]
         setOwnedCharacters([...ownedCharacters, charToAdd]);
       }
     } else {
@@ -156,10 +94,9 @@ function Home({
     }
   }
 
-  // Select a character for team building
+
   function selectCharacter(id) {
-    if (selectedCharacter && selectedCharacter.props.id === id) {
-      console.log("Deselecting character", id);
+    if (selectedCharacter && selectedCharacter.props.id === id){
       setChosenCharacter(null);
       setSelectedCharacter(null);
       return;
@@ -174,14 +111,15 @@ function Home({
         id={char.id}
         className={`rarity${char.rarity} characters selected`}
       >
-        <img src={char.icon} alt={`Icon of ${char.name}`} />
+       <img src = {`https://brainy-leigh-genshinteambuilder-abb9e887.koyeb.app/${char.icon}`}
+                      alt={`Icon of ${char.name}`}/>
         <h3>{char.name}</h3>
         <p>{char.element}</p>
       </div>
     );
   }
 
-  // --- Owned characters grid ---
+
   function displayCharacters() {
     if (ownedCharacterObjs.length) {
       return (
@@ -209,8 +147,10 @@ function Home({
                 id={char.id}
                 className={`rarity${char.rarity} characters`}
               >
-                <img src={char.icon} alt={`Icon of ${char.name}`} />
+                <img src = {`https://brainy-leigh-genshinteambuilder-abb9e887.koyeb.app/${char.icon}`}
+               alt={`Icon of ${char.name}`}/>
                 <h3>{char.name}</h3>
+                <p>Main role <br/>{char.roles[0]}</p>
                 <p>{char.element}</p>
               </div>
             ))}
@@ -227,7 +167,7 @@ function Home({
     }
   }
 
-  // Open modal and sync selectedIds with ownedCharacters, reset modal filters
+
   function openModal() {
     setSelectedIds(ownedCharacters.map((char) => String(char.id)));
     setModalElementFilter("all");
@@ -235,20 +175,9 @@ function Home({
     setIsModalOpen(true);
   }
 
-  const elements = [
-    "all",
-    "Anemo",
-    "Cryo",
-    "Dendro",
-    "Electro",
-    "Geo",
-    "Hydro",
-    "Pyro",
-  ];
-  const rarities = ["all", "five", "four", "six"];
 
   function filterCharacters(list, element, rarity) {
-    return list.filter(
+    return Object.values(list).filter(
       (char) =>
         (element === "all" || char.element === element) &&
         (rarity === "all" || char.rarity === rarity)
