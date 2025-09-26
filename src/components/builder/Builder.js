@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createTeam } from "../../util/fetchRequests.js";
 import loadingGif from "../../util/loading.gif";
-function Builder({ chosenCharacter, ownedCharacters, setErrorMessage }) {
+function Builder({ chosenCharacter, ownedCharacters, setErrorMessage, loading, setLoading }) {
   const [fetchedTeams, setFetchedTeams] = useState(null);
-  const [loading, setLoading] = useState(false);
+  
 
   const navigate = useNavigate();
 

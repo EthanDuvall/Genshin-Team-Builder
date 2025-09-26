@@ -2,12 +2,11 @@
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background: $page-color;
-  color: $text-dark;
+  background: $primary;
 }
 
 header {
-  background-color: $page-color;
+  background-color:$triary;
   height: 9vh;
   padding-top: 1%;
   h1 {
@@ -16,7 +15,7 @@ header {
     font-size: 5vh;
     color: $primary;
     letter-spacing: 0.02em;
-    font-weight: 700;
+    font-weight: 500;
   }
 }
 .errorModal {

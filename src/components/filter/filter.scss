@@ -1,0 +1,42 @@
+@import "../../styles/variables.scss";
+
+
+.filter-bar{
+  background-color: $triary;
+  display: flex;
+  flex-direction: row;
+  height: 7vh;
+  align-items: center;
+  font-size: 3vh;
+  width: 100%;
+  justify-content: space-between; 
+}
+
+.filter-bar-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 4%;
+  margin-right:4%;
+  span{
+    margin-right: 5%;
+  }
+  button{
+    background-color: none;
+    border: none;
+
+    img{
+      width: 6vh;
+      height: 6vh;
+    }
+  }
+  button:hover{
+    cursor: pointer;
+  }
+}
+
+.inactive{
+  img{
+  filter:brightness(15%);
+  }
+}
