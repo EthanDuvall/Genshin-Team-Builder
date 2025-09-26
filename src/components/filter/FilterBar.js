@@ -60,15 +60,15 @@ function FilterBar({ filterState, setFilterState, setElement, setRarity }) {
           </button>
         ))}
       </div>
-      <div className="filter-bar-row">
+      <div className="filter-bar-row rarity-row">
         <span>Rarity:</span>
         {rarities.map((r) => (
-          <button
+          <button 
             key={r.toLowerCase()}
-            className={filterState.rarity === r.toLowerCase() ? "active" : ""}
+            className={filterState.rarity === r.toLowerCase() ? "active" : "" }
             onClick={() => handleToggle("rarity", r.toLowerCase())}
           >
-            {r}
+            {r} ☆
           </button>
         ))}
       </div>

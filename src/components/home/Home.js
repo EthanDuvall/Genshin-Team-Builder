@@ -53,6 +53,7 @@ function Home({
                 checked={isSelected}
               />
               <label
+                tabindex="0"
                 htmlFor={`character-checkbox-${character.id}`}
                 className={`characters ${character.rarity} ${
                   isSelected ? "selected" : ""
@@ -134,6 +135,7 @@ function Home({
             ).map((char) => (
               <div
                 key={char.id}
+                tabindex="0"
                 onClick={() => selectCharacter(char.id)}
                 id={char.id}
                 className={`rarity${char.rarity} characters`}
@@ -154,7 +156,6 @@ function Home({
         </div>
       );
     } else {
-      console.log("No owned characters");
       return (
         <div className="noChar">
           <h2>To get started add your characters!</h2>
