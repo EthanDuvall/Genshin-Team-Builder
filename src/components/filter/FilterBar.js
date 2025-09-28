@@ -1,7 +1,7 @@
+import "./filter.scss";
 
-function FilterBar({ vertical = false, filterState, setFilterState, setElement, setRarity }) {
+function FilterBar({ filterState, setFilterState, setElement, setRarity }) {
   const elements = [
-    "all",
     "Anemo",
     "Cryo",
     "Dendro",
@@ -10,37 +10,65 @@ function FilterBar({ vertical = false, filterState, setFilterState, setElement, 
     "Hydro",
     "Pyro",
   ];
-  const rarities = ["all", "five", "four", "six"];
+  const rarities = ["Five", "Four"];
+
+  // helper toggle logic
+  const handleToggle = (type, value) => {
+    if (type === "element") {
+      if (setElement) {
+        setElement(filterState.element === value ? "all" : value);
+      } else {
+        setFilterState((prev) => ({
+          ...prev,
+          element: prev.element === value ? "all" : value,
+        }));
+      }
+    } else if (type === "rarity") {
+      if (setRarity) {
+        setRarity(filterState.rarity === value ? "all" : value);
+      } else {
+        setFilterState((prev) => ({
+          ...prev,
+          rarity: prev.rarity === value ? "all" : value,
+        }));
+      }
+    }
+  };
 
   return (
-    <div className={`filter-bar${vertical ? " vertical" : ""}`}>
-      <div className="filter-bar-row">
+    <div className={`filter-bar`}>
+      <div className="filter-bar-row element-row">
         <span>Element:</span>
         {elements.map((el) => (
           <button
             key={el}
-            className={filterState.element === el ? "active" : ""}
-            onClick={() => {
-              if (setElement) setElement(el);
-              else setFilterState((prev) => ({ ...prev, element: el }));
-            }}
+            className={
+              filterState.element === el
+                ? "active"
+                : filterState.element !== "all"
+                ? "inactive"
+                : ""
+            }
+            onClick={() => handleToggle("element", el)}
           >
-            {el}
+            {
+              <img
+                src={require(`../../util/Elements/Element_${el}.svg`)}
+                alt={el}
+              />
+            }
           </button>
         ))}
       </div>
-      <div className="filter-bar-row">
+      <div className="filter-bar-row rarity-row">
         <span>Rarity:</span>
         {rarities.map((r) => (
-          <button
-            key={r}
-            className={filterState.rarity === r ? "active" : ""}
-            onClick={() => {
-              if (setRarity) setRarity(r);
-              else setFilterState((prev) => ({ ...prev, rarity: r }));
-            }}
+          <button 
+            key={r.toLowerCase()}
+            className={filterState.rarity === r.toLowerCase() ? "active" : "" }
+            onClick={() => handleToggle("rarity", r.toLowerCase())}
           >
-            {r}
+            {r} ☆
           </button>
         ))}
       </div>

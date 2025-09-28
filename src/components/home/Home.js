@@ -1,12 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import "./Home.scss";
-import { useEffect, useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import FilterBar from "../filter/FilterBar";
+import loadingGif from "../../util/loading.gif";
 function Home({
   allCharacters,
   setChosenCharacter,
   ownedCharacters,
   setOwnedCharacters,
+  loading,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
@@ -17,19 +19,17 @@ function Home({
   const [modalRarityFilter, setModalRarityFilter] = useState("all");
   const navigate = useNavigate();
 
-
+  useEffect(() => {
+    openModal();
+  }, []);
 
   const ownedCharacterObjs = useMemo(
     () =>
       ownedCharacters
-        .map((char) =>
-            allCharacters[String(char.id)]
-        )
+        .map((char) => allCharacters[String(char.id)])
         .filter(Boolean),
     [ownedCharacters, allCharacters]
   );
-
-
 
   function characterForm() {
     return (
@@ -52,6 +52,7 @@ function Home({
                 checked={isSelected}
               />
               <label
+                tabindex="0"
                 htmlFor={`character-checkbox-${character.id}`}
                 className={`characters ${character.rarity} ${
                   isSelected ? "selected" : ""
@@ -62,7 +63,6 @@ function Home({
                   src={`https://brainy-leigh-genshinteambuilder-abb9e887.koyeb.app/${character.icon}`}
                   alt={`Icon of ${character.name}`}
                 />
-
               </label>
             </div>
           );
@@ -76,7 +76,6 @@ function Home({
     setSelectedCharacter(null);
   }
 
-
   function handleCheckboxChange(e) {
     const { value, checked } = e.target;
     setSelectedIds((prev) =>
@@ -84,7 +83,7 @@ function Home({
     );
     if (checked) {
       if (!ownedCharacters.some((char) => String(char.id) === value)) {
-        const charToAdd = allCharacters[value]
+        const charToAdd = allCharacters[value];
         setOwnedCharacters([...ownedCharacters, charToAdd]);
       }
     } else {
@@ -94,9 +93,8 @@ function Home({
     }
   }
 
-
   function selectCharacter(id) {
-    if (selectedCharacter && selectedCharacter.props.id === id){
+    if (selectedCharacter && selectedCharacter.props.id === id) {
       setChosenCharacter(null);
       setSelectedCharacter(null);
       return;
@@ -111,14 +109,20 @@ function Home({
         id={char.id}
         className={`rarity${char.rarity} characters selected`}
       >
-       <img src = {`https://brainy-leigh-genshinteambuilder-abb9e887.koyeb.app/${char.icon}`}
-                      alt={`Icon of ${char.name}`}/>
+        <img
+          src={`https://brainy-leigh-genshinteambuilder-abb9e887.koyeb.app/${char.icon}`}
+          alt={`Icon of ${char.name}`}
+        />
         <h3>{char.name}</h3>
+        <img
+          className="element-icon"
+          src={require(`../../util/Elements/Element_${char.element}.svg`)}
+          alt={char.element}
+        />
         <p>{char.element}</p>
       </div>
     );
   }
-
 
   function displayCharacters() {
     if (ownedCharacterObjs.length) {
@@ -127,14 +131,6 @@ function Home({
           <h2>
             Now select a character by clicking on them to start building a team!
           </h2>
-          <FilterBar
-            vertical
-            filterState={{ element: elementFilter, rarity: rarityFilter }}
-            setFilterState={({ element, rarity }) => {
-              setElementFilter(element ?? elementFilter);
-              setRarityFilter(rarity ?? rarityFilter);
-            }}
-          />
           <div className="characterHolder">
             {filterCharacters(
               ownedCharacterObjs,
@@ -143,14 +139,21 @@ function Home({
             ).map((char) => (
               <div
                 key={char.id}
+                tabindex="0"
                 onClick={() => selectCharacter(char.id)}
                 id={char.id}
                 className={`rarity${char.rarity} characters`}
               >
-                <img src = {`https://brainy-leigh-genshinteambuilder-abb9e887.koyeb.app/${char.icon}`}
-               alt={`Icon of ${char.name}`}/>
+                <img
+                  src={`https://brainy-leigh-genshinteambuilder-abb9e887.koyeb.app/${char.icon}`}
+                  alt={`Icon of ${char.name}`}
+                />
                 <h3>{char.name}</h3>
-                <p>Main role <br/>{char.roles[0]}</p>
+                <img
+                  className="element-icon"
+                  src={require(`../../util/Elements/Element_${char.element}.svg`)}
+                  alt={char.element}
+                />
                 <p>{char.element}</p>
               </div>
             ))}
@@ -161,20 +164,18 @@ function Home({
       return (
         <div className="noChar">
           <h2>To get started add your characters!</h2>
-          <h2>No characters found - add them or refresh the page</h2>
         </div>
       );
     }
   }
 
-
   function openModal() {
+    console.log("Opening modal");
     setSelectedIds(ownedCharacters.map((char) => String(char.id)));
     setModalElementFilter("all");
     setModalRarityFilter("all");
     setIsModalOpen(true);
   }
-
 
   function filterCharacters(list, element, rarity) {
     return Object.values(list).filter(
@@ -202,30 +203,28 @@ function Home({
             </button>
           </div>
         )}
+        {isModalOpen &&
+          (loading ? (
+            <aside className="loading-container">
+              <p className="loading">Loading characters...</p>
+              <img src={loadingGif} alt="Loading..." />
+            </aside>
+          ) : (
+            <>
+              <div className="characterModal-wrapper">
+                <FilterBar
+                  filterState={{
+                    element: modalElementFilter,
+                    rarity: modalRarityFilter,
+                  }}
+                  setElement={setModalElementFilter}
+                  setRarity={setModalRarityFilter}
+                />
+                <div className="characterModal">{characterForm()}</div>
+              </div>
+            </>
+          ))}
       </div>
-      {isModalOpen && (
-        <>
-          <div className="characterModal-wrapper">
-            <button
-              type="button"
-              className="close-modal-btn"
-              onClick={() => setIsModalOpen(false)}
-              aria-label="Close modal"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <FilterBar
-              filterState={{
-                element: modalElementFilter,
-                rarity: modalRarityFilter,
-              }}
-              setElement={setModalElementFilter}
-              setRarity={setModalRarityFilter}
-            />
-            <div className="characterModal">{characterForm()}</div>
-          </div>
-        </>
-      )}
     </>
   );
 }

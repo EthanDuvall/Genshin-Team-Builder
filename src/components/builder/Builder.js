@@ -3,9 +3,14 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createTeam } from "../../util/fetchRequests.js";
 import loadingGif from "../../util/loading.gif";
-function Builder({ chosenCharacter, ownedCharacters, setErrorMessage }) {
+function Builder({
+  chosenCharacter,
+  ownedCharacters,
+  setErrorMessage,
+  loading,
+  setLoading,
+}) {
   const [fetchedTeams, setFetchedTeams] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -40,24 +45,32 @@ function Builder({ chosenCharacter, ownedCharacters, setErrorMessage }) {
 
     return (
       <div className="teams-list">
+        <h2>Generated Teams</h2>
         {fetchedTeams.map((team, idx) => (
           <div className="team" key={idx}>
-            {team.members.map((member) => (
-              <div
-                key={member.id}
-                className={`characters rarity${member.rarity}`}
-              >
-                <img
-                  src={`https://brainy-leigh-genshinteambuilder-abb9e887.koyeb.app/${member.icon}`}
-                  alt={`Icon of ${member.name}`}
-                />
-                <h3>{member.name}</h3>
-                <p>
-                  {member.element} <br />
-                  {member.roles[0]}
-                </p>
-              </div>
-            ))}
+            <h4>
+              {team.reaction.charAt(0).toUpperCase() + team.reaction.slice(1)}
+            </h4>
+            <div className="team-members">
+              {team.members.map((member) => (
+                <div
+                  key={member.id}
+                  className={`characters rarity${member.rarity}`}
+                >
+                  <img
+                    src={`https://brainy-leigh-genshinteambuilder-abb9e887.koyeb.app/${member.icon}`}
+                    alt={`Icon of ${member.name}`}
+                  />
+                  <h3>{member.name}</h3>
+                  <img
+                    className="element-icon"
+                    src={require(`../../util/Elements/Element_${member.element}.svg`)}
+                    alt={member.element}
+                  />
+                  <p>{member.element}</p>
+                </div>
+              ))}
+            </div>
           </div>
         ))}
       </div>
@@ -77,12 +90,14 @@ function Builder({ chosenCharacter, ownedCharacters, setErrorMessage }) {
               alt={`Icon of ${chosenCharacter.name}`}
             />
             <h3>{chosenCharacter.name}</h3>
-            <p>Main role: {chosenCharacter.roles[0]}</p>
+            <img
+              className="element-icon"
+              src={require(`../../util/Elements/Element_${chosenCharacter.element}.svg`)}
+              alt={chosenCharacter.element}
+            />
             <p>Element: {chosenCharacter.element}</p>
           </div>
         )}
-
-        <h2>Generated Teams</h2>
 
         {loading ? (
           <div className="loading-container">

@@ -1,304 +1,217 @@
 @import "../../styles/variables";
-
-.characters h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.1rem;
+.main-content {
+  height: 80vh;
+  display: block;
+}
+.characters-btn {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  background-color: $primary;
+  color: $quadary;
+  width: 15vh;
+  height: 7vh;
+  font-size: 2.5vh;
+  border-radius: 10px;
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+}
+.characters-btn:hover {
   color: $primary;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  max-width: 100%;
-  text-align: center;
-  word-break: break-word;
-  overflow-wrap: break-word;
-  min-height: 2.6em;
-  line-height: 1.2;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  white-space: normal;
-  overflow: hidden;
+  transition: 400ms;
+  background-color: $quadary;
+  box-shadow: $shadow-hover;
+  cursor: pointer;
 }
 
 .noChar {
-  background-color: $page-color;
-  padding: 2rem 1.5rem;
-  border-radius: 16px;
-  box-shadow: $shadow;
-  text-align: center;
-  color: $text-dark;
-  font-size: 1.15rem;
-  font-weight: 500;
-  max-width: 600px;
-  margin: 2rem auto;
-  letter-spacing: 0.02em;
-  transition: box-shadow 0.2s;
-  border: 1.5px solid $border-color;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-.characters-btn {
-  display: block;
-  position: absolute;
-  top: 70%;
-  left: 63%;
-  margin: 2rem auto 0 auto;
-  background-color: $primary;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 0.75rem 2rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
-  transition: background 0.2s, box-shadow 0.2s;
-
-  &:hover {
-    background-color: darken($primary, 7%);
-    box-shadow: $shadow-hover;
-  }
-}
-
-.characterModal-wrapper {
-  position: fixed;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80vw;
-  max-width: 1100px;
-  max-height: 80vh;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  background: $page-color;
-  border-radius: 20px;
-  box-shadow: $shadow;
-  padding: 2.5rem 2rem;
-  gap: 1rem;
-}
-
-.close-modal-btn {
-  position: absolute;
-  top: 1.2rem;
-  right: 1.5rem;
-  background: #fff;
-  border: none;
-  cursor: pointer;
-  font-size: 2.2rem;
-  color: $primary;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  z-index: 11;
-  border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 0.2rem 0.7rem 0.3rem 0.7rem;
-  display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid $primary-light;
-
-  &:hover {
-    background: $primary;
-    color: #fff;
-    box-shadow: $shadow-hover;
-    border-color: $primary;
-  }
+  height: 15vh;
+  text-align: center;
+  color: $quadary;
+  font-size: 2rem;
+  padding: 0 2rem;
 }
-
+.characterModal-wrapper {
+  border-radius: 20px 20px;
+  position: absolute;
+  padding-bottom: 10px;
+  top: 25%;
+  left: 1%;
+  z-index: 999;
+  width: 170vh;
+  height: 70vh;
+  margin-left: 13vh;
+  background-color: $secondary;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 .characterModal {
-  width: 100%;
-  height: 60vh;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: auto auto auto auto auto;
+  gap: 2vh;
   overflow-y: auto;
-  color: $text-dark; // Consistent text color
-  background: transparent;
-  box-shadow: none;
-  border-radius: 0;
-  padding: 0;
-}
-
-.characterModal input[type="checkbox"] {
-  display: none;
+  width: 96%;
+  padding-left: 50px;
+  padding-bottom: 3%;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  scrollbar-color: $quadary $secondary;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $secondary;
+    border-radius: 20px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $quadary;
+    border-radius: 20px;
+    border: 2px solid $secondary;
+  }
+  .character-form-item :hover {
+    transition: 300ms;
+    cursor: pointer;
+    background-color: $primary;
+    color: $triary;
+  }
 }
 
 .characters {
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: $shadow;
-  padding: 1.2rem 0.5rem 1rem 0.5rem;
+  font-size: 2vh;
+  color: $primary;
   display: flex;
   flex-direction: column;
   align-items: center;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: border 0.2s, box-shadow 0.2s, background 0.2s;
-  min-height: 180px;
-  min-width: 120px;
-  color: $text-dark; // Consistent text color
-
-  &.selected {
-    border: 2.5px solid $primary-light;
-    background: linear-gradient(135deg, $triary 60%, $primary-bg 100%);
-    box-shadow: $shadow-hover;
-    color: $text-dark; // Consistent text color
+  border-radius: 20px 20px;
+  background-color: $quadary;
+  width: 28vh;
+  height: 40vh;
+  text-align: center;
+  justify-content: space-evenly;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  h3 {
+    margin-bottom: 1vh;
   }
-
-  &:hover {
-    box-shadow: $shadow-hover;
-    border: 2px solid $primary-light;
-    color: $text-dark; // Consistent text color
+  img {
+    width: 20vh;
+    height: 20vh;
+    border-radius: 10px;
+    margin: 1vh;
+  }
+  .element-icon {
+    width: 6vh;
+    height: 6vh;
+    margin: 0;
   }
 }
-
-.characters img {
-  width: 90%;
-  height: 110px;
-  object-fit: contain;
-  margin: 0.75rem 0 0 0;
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(124, 58, 237, 0.08);
-  display: block;
-  align-self: center;
-  padding: 0.5rem;
+input[type="checkbox"] {
+  display: none;
 }
-
-.characterModal::-webkit-scrollbar,
-.characterHolder::-webkit-scrollbar {
-  width: 10px;
-}
-.characterModal::-webkit-scrollbar-thumb,
-.characterHolder::-webkit-scrollbar-thumb {
-  background: $primary-bg;
-  border-radius: 8px;
-}
-.characterModal::-webkit-scrollbar-track,
-.characterHolder::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.characterHolder {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  max-height: 63vh;
-  overflow-y: auto;
-  width: 100%;
-
-  gap: 1.5rem;
-  padding-right: 2%;
-  box-sizing: border-box;
-  color: $text-dark; // Consistent text color
+.selected {
+  background-color: $primary;
+  color: $triary;
 }
 
 .characterContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 1rem;
-  background-color: $page-color;
-  width: 30%;
-  height: 30%;
-  padding: 1%;
-  margin-left: 5%;
-  margin-right: 10%;
-  border-radius: 18px;
-  text-align: center;
-  color: $text-dark; // Consistent text color
+  float: left;
+  background-color: $secondary;
+  width: 100vh;
+  margin-left: 15vh;
+  height: 70vh;
+  margin-top: 6vh;
+  padding: 2%;
+  border-radius: 40px 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: $quadary;
 }
-
-.main-content {
-  margin-top: 1;
-  display: flex;
-  align-items: flex-start;
-  gap: 2rem;
-  color: $text-dark; // Consistent text color
+.characterHolder {
+  height: 90%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  row-gap: 2vh;
+  overflow-y: scroll;
+  scrollbar-color: $quadary $secondary;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $secondary;
+    border-radius: 20px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $quadary;
+    border-radius: 20px;
+    border: 2px solid $secondary;
+  }
+  .characters:hover {
+    transition: 300ms;
+    cursor: pointer;
+    background-color: $primary;
+    color: $triary;
+  }
 }
 
 .selected-character-display {
-  margin-left: 2%;
-  margin-top: 10%;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 1rem;
-  width: 30%;
-  height: 30%;
-  padding: 1%;
-  color: $text-dark; // Consistent text color
-
+  display: inline-block;
+  align-self: center;
+  width: 42vh;
+  margin-top: 6vh;
+  margin-left: 18vh;
+  .characters {
+    color: $quadary;
+    background-color: $secondary;
+    font-size: 3vh;
+    width: 42vh;
+    height: 60vh;
+    img {
+      width: 30vh;
+      height: 30vh;
+      border-radius: 15px;
+      margin: 1vh;
+    }
+    .element-icon {
+      width: 9vh;
+      height: 9vh;
+      margin: 0;
+    }
+  }
   button {
-    margin: 2rem auto 0 auto;
-    background-color: $primary;
-    color: #fff;
     border: none;
-    border-radius: 8px;
-    padding: 0.75rem 2rem;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
-    transition: background 0.2s, box-shadow 0.2s;
-
+    font-size: 3vh;
+    margin-top: 8vh;
+    background-color: $secondary;
+    color: $quadary;
+    width: 42vh;
+    height: 10vh;
+    border-radius: 10px 10px;
     &:hover {
-      background-color: darken($primary, 7%);
-      box-shadow: $shadow-hover;
+      cursor: pointer;
+      background-color: $quadary;
+      color: $primary;
     }
   }
 }
-.rarityfive {
-  background: linear-gradient(135deg, #ffe082 60%, #fffde7 100%);
-}
-.rarityfour {
-  background: linear-gradient(135deg, #bf8dd3 60%, #fffde7 100%);
-}
-.raritysix {
-  background: linear-gradient(135deg, #f87171 60%, #fffde7 100%);
-}
 
-.filter-bar {
+.loading-container {
+  background-color: $secondary;
+  color: $primary;
+  width: 40vh;
+  height: 40vh;
+  font-size: 4vh;
   display: flex;
-  gap: 0.5rem;
+  flex-direction: column;
+  text-align: center;
   align-items: center;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-
-  button {
-    background: $secondary;
-    color: $text-dark;
-    border: none;
-    border-radius: 6px;
-    padding: 0.3rem 0.8rem;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background 0.2s, color 0.2s;
-    &.active {
-      background: $primary;
-      color: #fff;
-    }
+  border-radius: 20px 20px;
+  margin-top: 10vh;
+  justify-self: center;
+  img {
+    height: 20vh;
+    width: 20vh;
   }
-
-  &.vertical {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.3rem;
-
-    .filter-bar-row {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.2rem;
-    }
-  }
-}
-
-.filter-bar-row {
-  // Default row style for horizontal layout
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
 }

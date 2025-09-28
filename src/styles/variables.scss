@@ -1,14 +1,9 @@
-$page-color: #F3F3F0;      
-$primary: #686568;        
-$secondary: #c8cac9;       
-$triary: #99BAD2;
+$primary: #3B1E54;
+$secondary: #9B7EBD;
+$triary: #EEEEEE;
+$quadary: #FFDFEF;
 
 // Add these for consistency:
-$primary-light: lighten($primary, 25%);
-$primary-bg: #fff;
-$text-dark: #222;
-$text-light: #888;
-$border-color: $secondary;
 $shadow: 0 2px 10px rgba(104, 101, 104, 0.07);
 $shadow-hover: 0 4px 16px rgba(104, 101, 104, 0.13);
 
