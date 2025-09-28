@@ -1,5 +1,8 @@
 @import "../../styles/variables";
-
+.main-content {
+  height: 80vh;
+  display: block;
+}
 .characters-btn {
   position: absolute;
   top: 2%;
@@ -13,7 +16,9 @@
   box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.2);
 }
 .characters-btn:hover {
-  background-color: darken($primary, 7%);
+  color: $primary;
+  transition: 400ms;
+  background-color: $quadary;
   box-shadow: $shadow-hover;
   cursor: pointer;
 }
@@ -32,9 +37,10 @@
 .characterModal-wrapper {
   border-radius: 20px 20px;
   position: absolute;
+  padding-bottom: 10px;
   top: 25%;
   left: 1%;
-  z-index: 10000;
+  z-index: 999;
   width: 170vh;
   height: 70vh;
   margin-left: 13vh;
@@ -47,49 +53,165 @@
 .characterModal {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
-  gap: 1vh;
-  height: 60vh;
+  gap: 2vh;
   overflow-y: auto;
   width: 96%;
-  height: 90%;
-  padding-left: 60px;
+  padding-left: 50px;
   padding-bottom: 3%;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
   scrollbar-color: $quadary $secondary;
   &::-webkit-scrollbar {
-    width: 8px; 
+    width: 8px;
   }
   &::-webkit-scrollbar-track {
-    background: $secondary; 
+    background: $secondary;
     border-radius: 20px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: $quadary; 
+    background-color: $quadary;
     border-radius: 20px;
-    border: 2px solid $secondary; 
+    border: 2px solid $secondary;
   }
-  
+  .character-form-item :hover {
+    transition: 300ms;
+    cursor: pointer;
+    background-color: $primary;
+    color: $triary;
+  }
 }
 
 .characters {
+  font-size: 2vh;
+  color: $primary;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 20px 20px;
-  border: solid;
   background-color: $quadary;
   width: 28vh;
   height: 40vh;
   text-align: center;
   justify-content: space-evenly;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  h3 {
+    margin-bottom: 1vh;
+  }
   img {
     width: 20vh;
     height: 20vh;
     border-radius: 10px;
     margin: 1vh;
   }
+  .element-icon {
+    width: 6vh;
+    height: 6vh;
+    margin: 0;
+  }
 }
 input[type="checkbox"] {
   display: none;
+}
+.selected {
+  background-color: $primary;
+  color: $triary;
+}
+
+.characterContainer {
+  float: left;
+  background-color: $secondary;
+  width: 100vh;
+  margin-left: 15vh;
+  height: 70vh;
+  margin-top: 6vh;
+  padding: 2%;
+  border-radius: 40px 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: $quadary;
+}
+.characterHolder {
+  height: 90%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  row-gap: 2vh;
+  overflow-y: scroll;
+  scrollbar-color: $quadary $secondary;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $secondary;
+    border-radius: 20px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $quadary;
+    border-radius: 20px;
+    border: 2px solid $secondary;
+  }
+  .characters:hover {
+    transition: 300ms;
+    cursor: pointer;
+    background-color: $primary;
+    color: $triary;
+  }
+}
+
+.selected-character-display {
+  display: inline-block;
+  align-self: center;
+  width: 42vh;
+  margin-top: 6vh;
+  margin-left: 18vh;
+  .characters {
+    color: $quadary;
+    background-color: $secondary;
+    font-size: 3vh;
+    width: 42vh;
+    height: 60vh;
+    img {
+      width: 30vh;
+      height: 30vh;
+      border-radius: 15px;
+      margin: 1vh;
+    }
+    .element-icon {
+      width: 9vh;
+      height: 9vh;
+      margin: 0;
+    }
+  }
+  button {
+    border: none;
+    font-size: 3vh;
+    margin-top: 8vh;
+    background-color: $secondary;
+    color: $quadary;
+    width: 42vh;
+    height: 10vh;
+    border-radius: 10px 10px;
+    &:hover {
+      cursor: pointer;
+      background-color: $quadary;
+      color: $primary;
+    }
+  }
+}
+
+.loading-container {
+  background-color: $secondary;
+  color: $primary;
+  width: 40vh;
+  height: 40vh;
+  font-size: 4vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  border-radius: 20px 20px;
+  margin-top: 10vh;
+  justify-self: center;
+  img {
+    height: 20vh;
+    width: 20vh;
+  }
 }

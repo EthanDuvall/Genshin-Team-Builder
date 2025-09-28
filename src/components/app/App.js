@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {fetchCharacters} from "../../util/fetchRequests.js"
+import { fetchCharacters } from "../../util/fetchRequests.js";
 import { Routes, Route, useNavigate } from "react-router-dom"; // <-- import useNavigate
 import Home from "../home/Home";
 import Builder from "../builder/Builder";
@@ -13,27 +13,27 @@ function App() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
-useEffect(() => {
-  const cached = sessionStorage.getItem("characters");
-  if (cached) {
-    setAllCharacters(JSON.parse(cached));
-    setLoading(false);
-  } else {
-    setLoading(true); 
-    fetchCharacters(setErrorMessage)
-      .then((data) => {
-        if (data) {
-          setAllCharacters(data);
-          sessionStorage.setItem("characters", JSON.stringify(data));
-        }
-      })
-      .catch((err) => {
-        console.error("Fetch failed:", err);
-        setErrorMessage("Server is still waking up, please try again.");
-      })
-      .finally(() => setLoading(false));
-  }
-}, []);
+  useEffect(() => {
+    const cached = sessionStorage.getItem("characters");
+    if (cached) {
+      setAllCharacters(JSON.parse(cached));
+      setLoading(false);
+    } else {
+      setLoading(true);
+      fetchCharacters(setErrorMessage)
+        .then((data) => {
+          if (data) {
+            setAllCharacters(data);
+            sessionStorage.setItem("characters", JSON.stringify(data));
+          }
+        })
+        .catch((err) => {
+          console.error("Fetch failed:", err);
+          setErrorMessage("Server is still waking up, please try again.");
+        })
+        .finally(() => setLoading(false));
+    }
+  }, []);
 
   function closeError() {
     setErrorMessage("");
@@ -46,31 +46,32 @@ useEffect(() => {
         </h1>
       </header>
 
-      
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Home
-                  ownedCharacters={ownedCharacters}
-                  setOwnedCharacters={setOwnedCharacters}
-                  allCharacters={allCharacters}
-                  setChosenCharacter={setChosenCharacter}
-                  loading={loading}
-                />
-              }
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              ownedCharacters={ownedCharacters}
+              setOwnedCharacters={setOwnedCharacters}
+              allCharacters={allCharacters}
+              setChosenCharacter={setChosenCharacter}
+              loading={loading}
             />
-            <Route
-              path="/build"
-              element={
-                <Builder
-                  chosenCharacter={chosenCharacter}
-                  ownedCharacters={ownedCharacters}
-                  setErrorMessage={setErrorMessage}
-                />
-              }
+          }
+        />
+        <Route
+          path="/build"
+          element={
+            <Builder
+              chosenCharacter={chosenCharacter}
+              ownedCharacters={ownedCharacters}
+              setErrorMessage={setErrorMessage}
+              setLoading={setLoading}
+              loading={loading}
             />
-          </Routes>
+          }
+        />
+      </Routes>
       {errorMessage && (
         <div className="errorModal">
           <h2>Error</h2>

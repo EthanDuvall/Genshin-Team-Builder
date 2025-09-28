@@ -9,7 +9,6 @@ function Home({
   ownedCharacters,
   setOwnedCharacters,
   loading,
-  
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
@@ -115,6 +114,11 @@ function Home({
           alt={`Icon of ${char.name}`}
         />
         <h3>{char.name}</h3>
+        <img
+          className="element-icon"
+          src={require(`../../util/Elements/Element_${char.element}.svg`)}
+          alt={char.element}
+        />
         <p>{char.element}</p>
       </div>
     );
@@ -145,10 +149,11 @@ function Home({
                   alt={`Icon of ${char.name}`}
                 />
                 <h3>{char.name}</h3>
-                <p>
-                  Main role <br />
-                  {char.roles[0]}
-                </p>
+                <img
+                  className="element-icon"
+                  src={require(`../../util/Elements/Element_${char.element}.svg`)}
+                  alt={char.element}
+                />
                 <p>{char.element}</p>
               </div>
             ))}
@@ -198,28 +203,28 @@ function Home({
             </button>
           </div>
         )}
+        {isModalOpen &&
+          (loading ? (
+            <aside className="loading-container">
+              <p className="loading">Loading characters...</p>
+              <img src={loadingGif} alt="Loading..." />
+            </aside>
+          ) : (
+            <>
+              <div className="characterModal-wrapper">
+                <FilterBar
+                  filterState={{
+                    element: modalElementFilter,
+                    rarity: modalRarityFilter,
+                  }}
+                  setElement={setModalElementFilter}
+                  setRarity={setModalRarityFilter}
+                />
+                <div className="characterModal">{characterForm()}</div>
+              </div>
+            </>
+          ))}
       </div>
-      {isModalOpen &&
-        (loading ? (
-          <aside className="loading-container">
-            <p className="loading">Loading characters...</p>
-            <img src={loadingGif} alt="Loading..." />
-          </aside>
-        ) : (
-          <>
-            <div className="characterModal-wrapper">
-              <FilterBar
-                filterState={{
-                  element: modalElementFilter,
-                  rarity: modalRarityFilter,
-                }}
-                setElement={setModalElementFilter}
-                setRarity={setModalRarityFilter}
-              />
-              <div className="characterModal">{characterForm()}</div>
-            </div>
-          </>
-        ))}
     </>
   );
 }

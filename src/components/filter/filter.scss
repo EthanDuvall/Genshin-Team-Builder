@@ -1,8 +1,7 @@
 @import "../../styles/variables.scss";
 
-
-.filter-bar{
-  border-top-left-radius:20px 20px;
+.filter-bar {
+  border-top-left-radius: 20px 20px;
   border-top-right-radius: 20px 20px;
   background-color: $triary;
   display: flex;
@@ -11,61 +10,80 @@
   align-items: center;
   font-size: 3vh;
   width: 100%;
-  justify-content: space-between; 
+  justify-content: space-between;
   margin-bottom: 2%;
   padding-top: 1vh;
 }
 
-.filter-bar-row{
-  color:$primary;
+.filter-bar-row {
+  color: $primary;
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-left: 2%;
-  margin-right:2%;
-  span{
+  margin-right: 2%;
+  justify-content: space-evenly;
+
+  span {
     margin-right: 5%;
     font-size: 4vh;
     padding-bottom: 2%;
   }
-  button{
-    background-color: none;
+  button {
     border: none;
     font-size: 4vh;
-   
-    img{
+    width: 6vh;
+    height: 6vh;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    justify-content: center;
+    img {
       width: 6vh;
       height: 6vh;
     }
   }
-  button:hover{
-    cursor: pointer;
+}
+
+.inactive {
+  img {
+    filter: brightness(15%);
   }
 }
 
-.inactive{
-  img{
-  filter:brightness(15%);
-  }
-}
-
-.rarity-row{
-  button{
+.rarity-row {
+  button {
     margin-right: 2%;
     width: 20vh;
     height: 6vh;
-    border: 2px solid black;
+    background-color: $quadary;
     border-radius: 10px;
     margin-bottom: 2%;
-    &.active{
-      border: 4px solid $primary;
-    }
-    &:hover{
-      border: 4px solid $primary;
+    padding-bottom: 6px;
+    color: $primary;
+
+    &:hover {
+      transition: 300ms;
+      cursor: pointer;
+      background-color: $primary;
+      color: $triary;
     }
   }
-  .active{
+
+  .active {
     background-color: $primary;
     color: $triary;
   }
-} 
+}
+
+.element-row {
+  width: 90vh;
+  padding-top: 6px;
+  button {
+    margin-bottom: 11px;
+    :hover {
+      cursor: pointer;
+      filter: brightness(65%);
+    }
+  }
+}

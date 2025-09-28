@@ -37,7 +37,7 @@ function FilterBar({ filterState, setFilterState, setElement, setRarity }) {
 
   return (
     <div className={`filter-bar`}>
-      <div className="filter-bar-row">
+      <div className="filter-bar-row element-row">
         <span>Element:</span>
         {elements.map((el) => (
           <button
